@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import CategoryLabel from './components/CategoryLabel';
 import { Header } from '../../components';
-import { Container, ResetText } from './components/style';
+import { Container, PaddingWrap, CategoryWrap, ResetText } from './components/style';
 
 const GoodTab3 = () => {
     const [data, setData] = useState();
@@ -47,9 +47,13 @@ const GoodTab3 = () => {
     return (
         <Container>
             <Header />
-            {data?.map((item, idx) => (
-                <CategoryLabel key={idx} checked={item.checked} title={item.title} num={item.num} />
-            ))}
+            <PaddingWrap>
+                <CategoryWrap>
+                    {data?.map((item, idx) => (
+                        <CategoryLabel key={idx} checked={item.checked} title={item.title} num={item.num} />
+                    ))}
+                </CategoryWrap>
+            </PaddingWrap>
             <ResetText>테스트</ResetText>
         </Container>
     );

@@ -5,7 +5,6 @@ const Container = styled.div`
     display: flex;
     width: 336px;
     height: 64px;
-    margin: 17px 10px 20px;
     padding: 12px 20px;
     opacity: 0.64;
     border-radius: 12px;

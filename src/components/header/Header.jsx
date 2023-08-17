@@ -8,7 +8,9 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
+    border-radius: 30px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, #fdfdfd, #fdfdfd), linear-gradient(273deg, #a0d0f4 100%, #a0d0f4 99%, #9bd4ff 58%, #47a9f4 19%, #4ba1e3 -1%);
 `;
 
 const Title = styled.span`

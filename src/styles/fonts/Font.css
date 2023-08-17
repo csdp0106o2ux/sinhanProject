@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'NanumSquareOTFR';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./NanumSquareOTFR.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'NanumSquareOTFB';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./NanumSquareOTFB.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'NanumSquareOTFEB';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./NanumSquareOTFEB.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'NanumSquareOTFL';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./NanumSquareOTFL.eot') format('eot');
+}
