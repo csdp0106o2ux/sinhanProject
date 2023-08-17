@@ -9,7 +9,8 @@ const Container = styled.div`
     padding: 12px 20px;
     opacity: 0.64;
     border-radius: 12px;
-    background-color: ${(props) => props.theme.pattensBlue};
+    background-color: ${(props, checked) => (checked ? props.theme.white : props.theme.pattensBlue)};
+    ${({ checked }) => checked && ' box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1)'};
 `;
 
 const LabelWrap = styled.div`
@@ -55,9 +56,9 @@ const CountText = styled.span`
     color: ${(props) => props.theme.nero};
 `;
 
-const CategoryLabel = ({ title, num }) => {
+const CategoryLabel = ({ title, num, checked }) => {
     return (
-        <Container>
+        <Container checked={checked}>
             <LabelWrap>
                 <Label />
                 <LabelText>{title}</LabelText>
