@@ -9,6 +9,7 @@ const theme = {
     mainColorLight: '#CCDFB0',
     backgroundColor: '#F6F9F0',
     darkGray: '#595959',
+    dimGray: '#555555',
     lightGray: '#939292',
     superLightGray: '#F1F2F5',
 };
