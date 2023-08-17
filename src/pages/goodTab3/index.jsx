@@ -1,8 +1,11 @@
-import React from 'react';
-import { Container, ResetText } from './components/style';
+import React, { useEffect, useState } from 'react';
+
 import CategoryLabel from './components/CategoryLabel';
+import { Container, ResetText } from './components/style';
 
 const GoodTab3 = () => {
+    const [data, setData] = useState();
+
     const dummyData = [
         {
             id: 0,
@@ -36,10 +39,16 @@ const GoodTab3 = () => {
         },
     ];
 
+    useEffect(() => {
+        setData(dummyData);
+    }, []);
+
     return (
         <Container>
+            {data?.map((item, idx) => (
+                <CategoryLabel key={idx} checked={item.checked} title={item.title} num={item.num} />
+            ))}
             <ResetText>테스트</ResetText>
-            <CategoryLabel />
         </Container>
     );
 };

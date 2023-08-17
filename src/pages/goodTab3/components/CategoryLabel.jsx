@@ -9,8 +9,8 @@ const Container = styled.div`
     padding: 12px 20px;
     opacity: 0.64;
     border-radius: 12px;
-    background-color: ${(props, checked) => (checked ? props.theme.white : props.theme.pattensBlue)};
-    ${({ checked }) => checked && ' box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1)'};
+    background-color: ${(props) => (props.checked ? props.theme.white : props.theme.pattensBlue)};
+    ${({ checked }) => checked && 'box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1)'};
 `;
 
 const LabelWrap = styled.div`
@@ -23,7 +23,7 @@ const Label = styled.div`
     height: 15px;
     margin: 13px 6px 12px 0;
     border-radius: 12px;
-    background-color: #323a40;
+    background-color: ${(props) => (props.title === '전체' ? props.theme.dodgerBlue : props.title === '접수' ? props.theme.pacificBlue : props.title === '배정' ? props.theme.fruitSalad : props.title === '조사' ? props.theme.lightningYellow : props.theme.mirage)};
 `;
 
 const LabelText = styled.span`
@@ -56,15 +56,15 @@ const CountText = styled.span`
     color: ${(props) => props.theme.nero};
 `;
 
-const CategoryLabel = ({ title, num, checked }) => {
+const CategoryLabel = (props) => {
     return (
-        <Container checked={checked}>
+        <Container checked={props.checked} onClick={props.onClick}>
             <LabelWrap>
-                <Label />
-                <LabelText>{title}</LabelText>
+                <Label title={props.title} />
+                <LabelText>{props.title}</LabelText>
             </LabelWrap>
             <CountWrap>
-                <CountText>{num}</CountText>
+                <CountText>{props.num}</CountText>
             </CountWrap>
         </Container>
     );
