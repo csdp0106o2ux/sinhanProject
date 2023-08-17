@@ -5,7 +5,7 @@ const Container = styled.div`
     height: 100%;
 `;
 
-const ResetText = styled.p`
+const ResetText = styled.span`
     font-size: 14px;
     line-height: 21px;
     color: ${(props) => props.theme.dimGray};
