@@ -7,13 +7,16 @@ const size = {
 const theme = {
     white: '#FFFFFF',
     lightningYellow: '#F9A824',
+    whisper: '#EDEDED',
     nero: '#1F1F1F',
     mirage: '#323A40',
+    nightRider: '#333333',
     darkGray: '#595959',
     dimGray: '#555555',
     fruitSalad: '#3DA141',
     aliceBlue: '#F3FAFF',
     dodgerBlue: '#0091EA',
+    lightPacificBlue: '#0094DE',
     pacificBlue: '#0086D9',
     pattensBlue: '#D5E9F7',
 };
