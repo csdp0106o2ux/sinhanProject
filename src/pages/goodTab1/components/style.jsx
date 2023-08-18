@@ -3,10 +3,15 @@ import { styled } from 'styled-components';
 const Container = styled.div`
     padding: 98px 60px 20px 140px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: linear-gradient(to bottom, rgba(202, 237, 250, 0) 0%, #caedfa 100%);
 `;
 
 const BoardTitleWrap = styled.div`
+    margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
 `;
@@ -55,7 +60,14 @@ const IconWrap = styled.div`
     left: -5px;
 `;
 
+const DropDownWrap = styled.div`
+    margin-bottom: 42px;
+    display: flex;
+    align-items: center;
+`;
+
 const DropDownText = styled.span`
+    margin-right: 10px;
     font-family: NanumSquareOTFB;
     font-size: 16px;
     font-weight: normal;
@@ -66,4 +78,11 @@ const DropDownText = styled.span`
     color: ${(props) => props.theme.dimGray};
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownText };
+const ScoreWrap = styled.div`
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #f3faff;
+    height: 660px;
+`;
+
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap };

@@ -5,6 +5,7 @@ import { ReactComponent as UnderArrow } from '../../assets/icons/dropDownUnderAr
 import { ReactComponent as Calender } from '../../assets/icons/dropDownCalender.svg';
 
 const Container = styled.div`
+    margin-right: ${(props) => (props.margin ? '4px' : '0px')};
     padding: 6px 0 6px 10px;
     width: ${(props) => props.width}px;
     height: 30px;
@@ -28,7 +29,7 @@ const Title = styled.span`
 
 const DropDown = (props) => {
     return (
-        <Container width={props.width}>
+        <Container width={props.width} margin={props.margin}>
             <Title>{props.title}</Title>
             {props.calender ? <Calender /> : <UnderArrow />}
         </Container>
