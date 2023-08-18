@@ -1,0 +1,37 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-18.8%" y="-18.8%" width="137.5%" height="137.5%" filterUnits="objectBoundingBox" id="exdtrbpo2a">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0.1045 0 0 0 0 0.513090909 0 0 0 0 0.95 0 0 0 0.2 0" in="shadowBlurOuter1"/>
+        </filter>
+        <filter x="-28.8%" y="-28.8%" width="157.5%" height="157.5%" filterUnits="objectBoundingBox" id="ou6y6y6whd">
+            <feMorphology radius="2" in="SourceAlpha" result="shadowSpreadInner1"/>
+            <feGaussianBlur stdDeviation="4" in="shadowSpreadInner1" result="shadowBlurInner1"/>
+            <feOffset dy="-3" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" in="shadowInnerInner1" result="shadowMatrixInner1"/>
+            <feMorphology radius="10" operator="dilate" in="SourceAlpha" result="shadowSpreadInner2"/>
+            <feGaussianBlur stdDeviation="3" in="shadowSpreadInner2" result="shadowBlurInner2"/>
+            <feOffset dy="13" in="shadowBlurInner2" result="shadowOffsetInner2"/>
+            <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.35 0" in="shadowInnerInner2" result="shadowMatrixInner2"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixInner1"/>
+                <feMergeNode in="shadowMatrixInner2"/>
+            </feMerge>
+        </filter>
+        <linearGradient x1="99.538%" y1="100%" x2=".11%" y2="-30.827%" id="mmjxcnnn6c">
+            <stop stop-color="#A0D0F4" offset="0%"/>
+            <stop stop-color="#A0D0F4" offset=".089%"/>
+            <stop stop-color="#5CB8FF" offset="79.869%"/>
+            <stop stop-color="#5BB4F8" offset="100%"/>
+        </linearGradient>
+        <path d="M20 0c11.046 0 20 8.954 20 20s-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0zm1 28h-2a1 1 0 0 0 0 2h2l.117-.007A1 1 0 0 0 21 28zm-1-18-.117.007A1 1 0 0 0 19 11v.083A6.002 6.002 0 0 0 14 17v5.05a2.5 2.5 0 0 0-2 2.45v.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5a2.5 2.5 0 0 0-2-2.45V17a6.002 6.002 0 0 0-5-5.917V11a1 1 0 0 0-1-1z" id="ou2a1avx0b"/>
+    </defs>
+    <g transform="translate(5 5)" fill="none" fill-rule="evenodd">
+        <use fill="#000" filter="url(#exdtrbpo2a)" xlink:href="#ou2a1avx0b"/>
+        <use fill="url(#mmjxcnnn6c)" xlink:href="#ou2a1avx0b"/>
+        <use fill="#000" filter="url(#ou6y6y6whd)" xlink:href="#ou2a1avx0b"/>
+    </g>
+</svg>

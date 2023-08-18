@@ -10,6 +10,7 @@ const theme = {
     whisper: '#EDEDED',
     nero: '#1F1F1F',
     mirage: '#323A40',
+    blackPearl: '#1D292E',
     nightRider: '#333333',
     darkGray: '#595959',
     dimGray: '#555555',
