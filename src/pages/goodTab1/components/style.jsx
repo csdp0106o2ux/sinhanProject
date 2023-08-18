@@ -7,6 +7,7 @@ const Container = styled.div`
 `;
 
 const BoardTitleWrap = styled.div`
+    margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
 `;
@@ -55,7 +56,14 @@ const IconWrap = styled.div`
     left: -5px;
 `;
 
+const DropDownWrap = styled.div`
+    margin-bottom: 42px;
+    display: flex;
+    align-items: center;
+`;
+
 const DropDownText = styled.span`
+    margin-right: 10px;
     font-family: NanumSquareOTFB;
     font-size: 16px;
     font-weight: normal;
@@ -66,4 +74,4 @@ const DropDownText = styled.span`
     color: ${(props) => props.theme.dimGray};
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownText };
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText };
