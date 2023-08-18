@@ -25,3 +25,24 @@
     font-weight: normal;
     src: url('./NanumSquareOTFL.eot') format('eot');
 }
+
+@font-face {
+    font-family: 'OneShinhan';
+    font-style: normal;
+    font-weight: bold;
+    src: url('./OneShinhanBold.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'OneShinhan';
+    font-style: normal;
+    font-weight: lighter;
+    src: url('./OneShinhanLight.eot') format('eot');
+}
+
+@font-face {
+    font-family: 'OneShinhan';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./OneShinhanMedium.eot') format('eot');
+}

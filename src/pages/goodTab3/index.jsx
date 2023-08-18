@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import CategoryLabel from './components/CategoryLabel';
+import CategoryLabel from './components/categoryLabel/CategoryLabel';
 import { Header } from '../../components';
 import { Container, PaddingWrap, CategoryWrap, ResetText } from './components/style';
 
