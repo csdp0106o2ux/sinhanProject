@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import DropDown from '../../components/dropDown/DropDown';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText } from './components/style';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap } from './components/style';
+import ScoreCard from './components/ScoreCard';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
@@ -52,6 +53,9 @@ const GoodTab1 = () => {
                     <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
                 ))}
             </DropDownWrap>
+            <ScoreWrap>
+                <ScoreCard />
+            </ScoreWrap>
         </Container>
     );
 };
