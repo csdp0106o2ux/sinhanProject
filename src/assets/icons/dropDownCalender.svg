@@ -1,0 +1,8 @@
+<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(7 6)" fill="none" fill-rule="evenodd">
+        <rect stroke="#727272" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" y="3" width="15" height="13" rx=".833"/>
+        <rect stroke="#727272" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" y="3" width="15" height="5" rx=".833"/>
+        <rect fill="#727272" transform="rotate(90 11.25 2.5)" x="8.75" y="1.75" width="5" height="1.5" rx=".75"/>
+        <rect fill="#727272" transform="rotate(90 3.75 2.5)" x="1.25" y="1.75" width="5" height="1.5" rx=".75"/>
+    </g>
+</svg>

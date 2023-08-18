@@ -40,7 +40,7 @@ const BannerWrap = styled.div`
 `;
 
 const BannerText = styled.span`
-    font-family: 'NanumSquareOTFR';
+    font-family: NanumSquareOTFR;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -55,4 +55,15 @@ const IconWrap = styled.div`
     left: -5px;
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap };
+const DropDownText = styled.span`
+    font-family: NanumSquareOTFB;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: ${(props) => props.theme.dimGray};
+`;
+
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownText };

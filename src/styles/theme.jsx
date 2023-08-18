@@ -13,6 +13,7 @@ const theme = {
     blackPearl: '#1D292E',
     nightRider: '#333333',
     darkGray: '#595959',
+    lightDimGray: '#727272',
     dimGray: '#555555',
     fruitSalad: '#3DA141',
     aliceBlue: '#F3FAFF',

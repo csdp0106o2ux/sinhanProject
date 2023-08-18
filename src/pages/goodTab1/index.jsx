@@ -2,7 +2,8 @@ import React from 'react';
 
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap } from './components/style';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownText } from './components/style';
+import DropDown from '../../components/dropDown/DropDown';
 
 const GoodTab1 = () => {
     return (
@@ -21,6 +22,8 @@ const GoodTab1 = () => {
                     <BlueSideArrow />
                 </BannerWrap>
             </BoardTitleWrap>
+            <DropDownText>서울권역. 서초 커뮤니티/ 남부터미널 기업금융센터 (출장소 포함)</DropDownText>
+            <DropDown width="100" title="테스트" calender />
         </Container>
     );
 };
