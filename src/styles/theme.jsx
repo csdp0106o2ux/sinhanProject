@@ -8,6 +8,7 @@ const theme = {
     white: '#FFFFFF',
     lightningYellow: '#F9A824',
     whisper: '#EDEDED',
+    solitude: '#E9ECEF',
     nero: '#1F1F1F',
     mirage: '#323A40',
     blackPearl: '#1D292E',

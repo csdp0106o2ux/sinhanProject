@@ -82,6 +82,7 @@ const ScoreWrap = styled.div`
     padding: 20px;
     border-radius: 16px;
     background-color: #f3faff;
+    width: 1140px;
     height: 660px;
 `;
 

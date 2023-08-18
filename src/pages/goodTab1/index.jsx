@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap } from './components/style';
-import ScoreCard from './components/ScoreCard';
+import ScoreCard from './components/scoreCard/ScoreCard';
 import { DropDown, ScoreGraphCard } from '../../components';
+import RadarCard from './components/radarCard/RadarCard';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
@@ -106,7 +107,10 @@ const GoodTab1 = () => {
                         <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
                     ))}
                 </FlexWrap>
-                <ScoreGraphCard />
+                <FlexWrap>
+                    <ScoreGraphCard />
+                    <RadarCard />
+                </FlexWrap>
             </ScoreWrap>
         </Container>
     );
