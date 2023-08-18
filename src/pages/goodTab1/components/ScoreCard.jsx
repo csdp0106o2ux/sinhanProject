@@ -5,7 +5,7 @@ const Container = styled.div`
     width: 154px;
     height: 89px;
     margin: 0 10px 10px;
-    padding: 16px 58px 16px 20px;
+    padding: 16px 0 16px 20px;
     border-radius: 16px;
     ${({ checked }) => (checked ? 'box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1), inset 0 13px 6px -10px rgba(255, 255, 255, 0.35);  background-image: linear-gradient(304deg, #a0d0f4 100%, #a0d0f4 100%, #5cb8ff 13%, #3495df -9%);' : 'background-color: rgba(255, 255, 255, 0.9);')};
 `;
@@ -24,7 +24,7 @@ const Title = styled.span`
 
 const TextWrap = styled.div`
     display: flex;
-    align-items: flex-end;
+    align-items: end;
 `;
 
 const NumText = styled.span`
@@ -52,10 +52,10 @@ const UnitText = styled.span`
 const ScoreCard = (props) => {
     return (
         <Container checked={props.checked}>
-            <Title checked={props.checked}>Good Score</Title>
+            <Title checked={props.checked}>{props.title}</Title>
             <TextWrap>
-                <NumText checked={props.checked}>84.1</NumText>
-                <UnitText checked={props.checked}>점</UnitText>
+                <NumText checked={props.checked}>{props.score}</NumText>
+                <UnitText checked={props.checked}>{props.unit}</UnitText>
             </TextWrap>
         </Container>
     );

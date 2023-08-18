@@ -8,10 +8,7 @@ import ScoreCard from './components/ScoreCard';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
-
-    useEffect(() => {
-        setDropDown(dummyData);
-    }, []);
+    const [score, setScore] = useState([]);
 
     const dummyData = [
         {
@@ -30,6 +27,56 @@ const GoodTab1 = () => {
             title: '2022.02',
         },
     ];
+
+    const scoreDummyData = [
+        {
+            id: 0,
+            title: 'Good Score',
+            score: '84.1',
+            unit: '점',
+            checked: true,
+        },
+        {
+            id: 1,
+            title: 'Good 경험률',
+            score: '84.1',
+            unit: '%',
+            checked: false,
+        },
+        {
+            id: 2,
+            title: 'Good 경험지수',
+            score: '84.1',
+            unit: '점',
+            checked: false,
+        },
+        {
+            id: 3,
+            title: '충성도',
+            score: '84.1',
+            unit: '점',
+            checked: false,
+        },
+        {
+            id: 4,
+            title: 'Good 응답수',
+            score: '15',
+            unit: '건',
+            checked: false,
+        },
+        {
+            id: 5,
+            title: '칭찬VOC',
+            score: '5',
+            unit: '건',
+            checked: false,
+        },
+    ];
+
+    useEffect(() => {
+        setDropDown(dummyData);
+        setScore(scoreDummyData);
+    }, []);
 
     return (
         <Container>
@@ -54,7 +101,9 @@ const GoodTab1 = () => {
                 ))}
             </DropDownWrap>
             <ScoreWrap>
-                <ScoreCard />
+                {score?.map((item) => (
+                    <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
+                ))}
             </ScoreWrap>
         </Container>
     );
