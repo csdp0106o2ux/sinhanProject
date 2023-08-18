@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import DropDown from '../../components/dropDown/DropDown';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap } from './components/style';
 import ScoreCard from './components/ScoreCard';
+import { DropDown, ScoreGraphCard } from '../../components';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
@@ -101,9 +101,12 @@ const GoodTab1 = () => {
                 ))}
             </DropDownWrap>
             <ScoreWrap>
-                {score?.map((item) => (
-                    <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
-                ))}
+                <FlexWrap>
+                    {score?.map((item) => (
+                        <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
+                    ))}
+                </FlexWrap>
+                <ScoreGraphCard />
             </ScoreWrap>
         </Container>
     );

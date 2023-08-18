@@ -80,7 +80,6 @@ const DropDownText = styled.span`
 
 const ScoreWrap = styled.div`
     padding: 20px;
-    display: flex;
     border-radius: 16px;
     background-color: #f3faff;
     height: 660px;

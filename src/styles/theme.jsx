@@ -17,9 +17,12 @@ const theme = {
     dimGray: '#555555',
     fruitSalad: '#3DA141',
     aliceBlue: '#F3FAFF',
+    pictonBlue: '#4892E1',
+    summerSky: '#3495DF',
     dodgerBlue: '#0091EA',
     lightPacificBlue: '#0094DE',
     pacificBlue: '#0086D9',
+    freeSpeechBlue: '#3D4CBA',
     pattensBlue: '#D5E9F7',
 };
 
