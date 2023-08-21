@@ -43,10 +43,10 @@ const KeywordListWrap = styled.div`
     flex-wrap: wrap;
 `;
 
-const KeywordCard = () => {
+const KeywordCard = (props) => {
     const [keyword, setKeyword] = useState([]);
 
-    const keywordData = [
+    const bestKeywordData = [
         {
             id: 0,
             num: 1,
@@ -79,9 +79,46 @@ const KeywordCard = () => {
         },
     ];
 
+    const worstKeywordData = [
+        {
+            id: 0,
+            num: 1,
+            title: '인상',
+            score: 30,
+        },
+        {
+            id: 1,
+            num: 2,
+            title: '무책임',
+            score: 22,
+        },
+        {
+            id: 2,
+            num: 3,
+            title: '낮은지식',
+            score: 20,
+        },
+        {
+            id: 3,
+            num: 4,
+            title: '비매너',
+            score: 15,
+        },
+        {
+            id: 4,
+            num: 5,
+            title: '불친절',
+            score: 10,
+        },
+    ];
+
     useEffect(() => {
-        setKeyword(keywordData);
-    }, []);
+        if (props.toggle === false) {
+            setKeyword(bestKeywordData);
+        } else {
+            setKeyword(worstKeywordData);
+        }
+    }, [props.toggle]);
 
     return (
         <Container>
@@ -90,7 +127,7 @@ const KeywordCard = () => {
                     <Title>My 키워드</Title>
                     <SideArrow />
                 </TitleWrap>
-                <ToggleSwitch />
+                <ToggleSwitch width={120} leftTitle={'Best'} rightTitle={'Worst'} checked={props.toggle} setToggle={props.setToggle} />
             </SpaceWrap>
             <KeywordListWrap>
                 {keyword.map((item, idx) => (
