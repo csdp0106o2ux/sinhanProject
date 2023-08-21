@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 
 import { DropDown, GoodCard, ScoreGraphCard, TabBar } from '../../components';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText } from './components/style';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap } from './components/style';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
+import AreaCard from './components/areaCard/AreaCard';
 
 const GoodTab2 = () => {
     const [dropDown, setDropDown] = useState([]);
+    const [areaData, setAreaData] = useState([]);
 
     const dummyData = [
         {
@@ -24,6 +26,45 @@ const GoodTab2 = () => {
             id: 2,
             width: 110,
             title: '2022.02',
+        },
+    ];
+
+    const areaDummyData = [
+        {
+            id: 0,
+            title: '진행',
+            checked: true,
+            disabled: false,
+        },
+        {
+            id: 1,
+            title: '서울지역본부',
+            checked: false,
+            disabled: false,
+        },
+        {
+            id: 2,
+            title: '경기지역본부',
+            checked: false,
+            disabled: true,
+        },
+        {
+            id: 3,
+            title: '인천지역본부',
+            checked: false,
+            disabled: true,
+        },
+        {
+            id: 4,
+            title: '강원지역본부',
+            checked: false,
+            disabled: true,
+        },
+        {
+            id: 5,
+            title: '충청북지역',
+            checked: false,
+            disabled: true,
         },
     ];
 
@@ -61,6 +102,10 @@ const GoodTab2 = () => {
                     <ScoreAreaWrap>
                         <ScoreTitle>Good 종합</ScoreTitle>
                         <DateText>12.13. 기준/월</DateText>
+                        {areaDummyData.map((item) => (
+                            <AreaCard key={item.id} id={item.id} title={item.title} disabled={item.disabled} checked={item.checked} />
+                        ))}
+                        <OpacityWrap />
                     </ScoreAreaWrap>
                 </ScoreWrap>
                 <NoticeWrap></NoticeWrap>
