@@ -3,8 +3,10 @@ import { styled } from 'styled-components';
 
 import { ReactComponent as SideArrow } from '../../../../assets/icons/graySideArrow.svg';
 import { ToggleSwitch } from '../../../../components';
+import ComplimentList from '../complimentList/ComplimentList';
 
 const Container = styled.div`
+    margin-bottom: 10px;
     width: 560px;
     height: 277px;
     padding: 20px 20px 21px 20px;
@@ -35,6 +37,8 @@ const Title = styled.div`
 `;
 
 const DateText = styled.span`
+    margin-bottom: 12px;
+    display: inline-block;
     opacity: 0.9;
     font-family: NanumSquareOTFR;
     font-size: 14px;
@@ -57,6 +61,8 @@ const ComplimentCard = () => {
                 <ToggleSwitch />
             </SpaceWrap>
             <DateText>12.13. 기준/월</DateText>
+            <ComplimentList />
+            <ComplimentList />
         </Container>
     );
 };

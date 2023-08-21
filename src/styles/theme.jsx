@@ -22,6 +22,7 @@ const theme = {
     pictonBlue: '#4892E1',
     summerSky: '#3495DF',
     dodgerBlue: '#0091EA',
+    nightDodgerBlue: '#338FF2',
     lightPacificBlue: '#0094DE',
     pacificBlue: '#0086D9',
     freeSpeechBlue: '#3D4CBA',

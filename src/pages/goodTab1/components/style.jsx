@@ -86,4 +86,10 @@ const ScoreWrap = styled.div`
     height: 660px;
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap };
+const NoticeWrap = styled.div`
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+`;
+
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap };
