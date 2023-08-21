@@ -5,9 +5,10 @@ import GraphImage from '../../../../assets/images/radarGraph.png';
 import { ReactComponent as SideArrow } from '../../../../assets/icons/graySideArrow.svg';
 
 const Container = styled.div`
+    margin-left: 10px;
+    padding: 20px;
     width: 395px;
     height: 521px;
-    padding: 20px;
     border-radius: 21px;
     box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1);
     background-color: ${(props) => props.theme.white};
