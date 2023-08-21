@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import ToggleSwitch from '../toggleSwitch/ToggleSwitch';
 import { ReactComponent as SideArrow } from '../../assets/icons/graySideArrow.svg';
+import GoodList from '../goodList/GoodList';
 
 const Container = styled.div`
     padding: 20px;
@@ -44,6 +45,7 @@ const GoodCard = () => {
                 </TitleWrap>
                 <ToggleSwitch />
             </SpaceWrap>
+            <GoodList />
         </Container>
     );
 };

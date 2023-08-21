@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const Container = styled.div`
     padding: 98px 60px 20px 140px;
-    width: 100%;
+    width: 1920px;
     height: 100vh;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);

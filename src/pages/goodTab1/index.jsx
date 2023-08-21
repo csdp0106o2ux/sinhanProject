@@ -4,7 +4,7 @@ import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArro
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap } from './components/style';
 import ScoreCard from './components/scoreCard/ScoreCard';
-import { DropDown, ScoreGraphCard } from '../../components';
+import { DropDown, GoodCard, ScoreGraphCard } from '../../components';
 import RadarCard from './components/radarCard/RadarCard';
 import KeywordCard from '../../components/keywordCard/KeywordCard';
 import KeywordList from '../../components/keywordList/KeywordList';
@@ -119,6 +119,7 @@ const GoodTab1 = () => {
                 <NoticeWrap>
                     <ComplimentCard />
                     <KeywordCard />
+                    <GoodCard />
                 </NoticeWrap>
             </FlexWrap>
         </Container>

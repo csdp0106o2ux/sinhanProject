@@ -6,6 +6,7 @@ import KeywordList from '../keywordList/KeywordList';
 import ToggleSwitch from '../toggleSwitch/ToggleSwitch';
 
 const Container = styled.div`
+    margin-bottom: 10px;
     padding: 20px;
     width: 560px;
     height: 181px;
