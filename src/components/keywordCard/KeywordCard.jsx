@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import { ReactComponent as SideArrow } from '../../assets/icons/graySideArrow.svg';
 import KeywordList from '../keywordList/KeywordList';
-import ToggleSwitch from '../switchToggle/ToggleSwitch';
+import ToggleSwitch from '../toggleSwitch/ToggleSwitch';
 
 const Container = styled.div`
     padding: 20px;
