@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap } from './components/style';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap } from './components/style';
 import ScoreCard from './components/scoreCard/ScoreCard';
-import { DropDown, ScoreGraphCard } from '../../components';
+import { DropDown, GoodCard, ScoreGraphCard } from '../../components';
 import RadarCard from './components/radarCard/RadarCard';
+import KeywordCard from '../../components/keywordCard/KeywordCard';
+import KeywordList from '../../components/keywordList/KeywordList';
+import ComplimentCard from './components/complimentCard/ComplimentCard';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
     const [score, setScore] = useState([]);
+    const [ComplimentToggle, setComplimentToggle] = useState(false);
+    const [keywordToggle, setKeywordToggle] = useState(false);
+    const [goodToggle, setGoodToggle] = useState(false);
 
     const dummyData = [
         {
@@ -101,17 +107,24 @@ const GoodTab1 = () => {
                     <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
                 ))}
             </DropDownWrap>
-            <ScoreWrap>
-                <FlexWrap>
-                    {score?.map((item) => (
-                        <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
-                    ))}
-                </FlexWrap>
-                <FlexWrap>
-                    <ScoreGraphCard />
-                    <RadarCard />
-                </FlexWrap>
-            </ScoreWrap>
+            <FlexWrap>
+                <ScoreWrap>
+                    <FlexWrap>
+                        {score?.map((item) => (
+                            <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
+                        ))}
+                    </FlexWrap>
+                    <FlexWrap>
+                        <ScoreGraphCard />
+                        <RadarCard />
+                    </FlexWrap>
+                </ScoreWrap>
+                <NoticeWrap>
+                    <ComplimentCard toggle={ComplimentToggle} setToggle={setComplimentToggle} />
+                    <KeywordCard />
+                    <GoodCard />
+                </NoticeWrap>
+            </FlexWrap>
         </Container>
     );
 };

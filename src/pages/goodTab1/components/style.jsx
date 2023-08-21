@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const Container = styled.div`
     padding: 98px 60px 20px 140px;
-    width: 100%;
+    width: 1920px;
     height: 100vh;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -86,4 +86,10 @@ const ScoreWrap = styled.div`
     height: 660px;
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap };
+const NoticeWrap = styled.div`
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+`;
+
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap };
