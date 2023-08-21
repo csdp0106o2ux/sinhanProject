@@ -21,10 +21,10 @@ const ListText = styled.span`
     color: #333;
 `;
 
-const GoodList = () => {
+const GoodList = (props) => {
     return (
         <Container>
-            <ListText>빠른 업무처리에 대한 고객들의 반응이 좋아요~!</ListText>
+            <ListText>{props.text}</ListText>
         </Container>
     );
 };

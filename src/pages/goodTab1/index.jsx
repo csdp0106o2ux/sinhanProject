@@ -122,7 +122,7 @@ const GoodTab1 = () => {
                 <NoticeWrap>
                     <ComplimentCard toggle={ComplimentToggle} setToggle={setComplimentToggle} />
                     <KeywordCard toggle={keywordToggle} setToggle={setKeywordToggle} />
-                    <GoodCard />
+                    <GoodCard toggle={goodToggle} setToggle={setGoodToggle} />
                 </NoticeWrap>
             </FlexWrap>
         </Container>
