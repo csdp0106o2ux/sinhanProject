@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import { ReactComponent as SideArrow } from '../../assets/icons/graySideArrow.svg';
 import KeywordList from '../keywordList/KeywordList';
+import ToggleSwitch from '../switchToggle/ToggleSwitch';
 
 const Container = styled.div`
     padding: 20px;
@@ -88,6 +89,7 @@ const KeywordCard = () => {
                     <Title>My 키워드</Title>
                     <SideArrow />
                 </TitleWrap>
+                <ToggleSwitch />
             </SpaceWrap>
             <KeywordListWrap>
                 {keyword.map((item, idx) => (

@@ -17,6 +17,7 @@ const theme = {
     lightDimGray: '#727272',
     dimGray: '#555555',
     fruitSalad: '#3DA141',
+    lightAliceBlue: '#EDF2F7',
     aliceBlue: '#F3FAFF',
     pictonBlue: '#4892E1',
     summerSky: '#3495DF',
