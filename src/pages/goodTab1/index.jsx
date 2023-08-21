@@ -4,11 +4,12 @@ import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArro
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap } from './components/style';
 import ScoreCard from './components/scoreCard/ScoreCard';
-import { DropDown, GoodCard, ScoreGraphCard } from '../../components';
+import { DropDown, GoodCard, ScoreGraphCard, TabBar } from '../../components';
 import RadarCard from './components/radarCard/RadarCard';
 import KeywordCard from '../../components/keywordCard/KeywordCard';
 import KeywordList from '../../components/keywordList/KeywordList';
 import ComplimentCard from './components/complimentCard/ComplimentCard';
+import ExperienceCard from './components/experienceCard/ExperienceCard';
 
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
@@ -87,9 +88,10 @@ const GoodTab1 = () => {
 
     return (
         <Container>
+            <TabBar />
             <BoardTitleWrap>
                 <FlexWrap>
-                    <BoardTitle>My Good</BoardTitle>
+                    <BoardTitle checked>My Good</BoardTitle>
                     <BoardTitle right>Our Good</BoardTitle>
                 </FlexWrap>
                 <BannerWrap>
@@ -111,11 +113,30 @@ const GoodTab1 = () => {
                 <ScoreWrap>
                     <FlexWrap>
                         {score?.map((item) => (
-                            <ScoreCard key={item.id} checked={item.checked} title={item.title} score={item.score} unit={item.unit} />
+                            <ScoreCard
+                                key={item.id}
+                                checked={item.checked}
+                                title={item.title}
+                                score={item.score}
+                                unit={item.unit}
+                                // onClick={() => {
+                                //     setScore(
+                                //         score.map((list) => {
+                                //             if (item.checked === list.checked) {
+                                //                 return {
+                                //                     ...list,
+                                //                     checked: false,
+                                //                 };
+                                //             }
+                                //         })
+                                //     );
+                                // }}
+                            />
                         ))}
                     </FlexWrap>
                     <FlexWrap>
-                        <ScoreGraphCard />
+                        <ExperienceCard />
+                        {/* <ScoreGraphCard /> */}
                         <RadarCard />
                     </FlexWrap>
                 </ScoreWrap>

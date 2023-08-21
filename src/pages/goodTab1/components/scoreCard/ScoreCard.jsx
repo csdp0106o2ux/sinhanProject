@@ -51,7 +51,7 @@ const UnitText = styled.span`
 
 const ScoreCard = (props) => {
     return (
-        <Container checked={props.checked}>
+        <Container checked={props.checked} onClick={props.onClick}>
             <Title checked={props.checked}>{props.title}</Title>
             <TextWrap>
                 <NumText checked={props.checked}>{props.score}</NumText>
