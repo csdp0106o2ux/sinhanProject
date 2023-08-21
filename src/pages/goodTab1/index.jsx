@@ -13,6 +13,9 @@ import ComplimentCard from './components/complimentCard/ComplimentCard';
 const GoodTab1 = () => {
     const [dropDown, setDropDown] = useState([]);
     const [score, setScore] = useState([]);
+    const [ComplimentToggle, setComplimentToggle] = useState(false);
+    const [keywordToggle, setKeywordToggle] = useState(false);
+    const [goodToggle, setGoodToggle] = useState(false);
 
     const dummyData = [
         {
@@ -117,7 +120,7 @@ const GoodTab1 = () => {
                     </FlexWrap>
                 </ScoreWrap>
                 <NoticeWrap>
-                    <ComplimentCard />
+                    <ComplimentCard toggle={ComplimentToggle} setToggle={setComplimentToggle} />
                     <KeywordCard />
                     <GoodCard />
                 </NoticeWrap>

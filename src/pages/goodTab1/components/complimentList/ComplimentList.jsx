@@ -40,13 +40,13 @@ const ListText = styled.span`
     color: ${(props) => props.theme.nightRider};
 `;
 
-const ComplimentList = () => {
+const ComplimentList = (props) => {
     return (
         <Container>
             <FlexWrap>
-                <StatusText good>Good</StatusText>
-                <ListText>차분하면서도 친절하게 말해주셨어요</ListText>
-                <NewNotice />
+                <StatusText good={props.status === 'good'}>{props.status}</StatusText>
+                <ListText>{props.text}</ListText>
+                {props.new && <NewNotice />}
             </FlexWrap>
         </Container>
     );

@@ -33,14 +33,24 @@ const ToggleText = styled.span`
     color: ${(props) => (props.checked ? props.theme.summerSky : props.theme.nightRider)};
 `;
 
-const ToggleSwitch = () => {
+const ToggleSwitch = (props) => {
     return (
-        <Container width={120}>
-            <ToggleWrap checked>
-                <ToggleText checked>Best</ToggleText>
+        <Container width={props.width}>
+            <ToggleWrap
+                checked={props.checked === false}
+                onClick={() => {
+                    props.setToggle(false);
+                }}
+            >
+                <ToggleText checked={props.checked === false}>{props.leftTitle}</ToggleText>
             </ToggleWrap>
-            <ToggleWrap>
-                <ToggleText>Worst</ToggleText>
+            <ToggleWrap
+                checked={props.checked === true}
+                onClick={() => {
+                    props.setToggle(true);
+                }}
+            >
+                <ToggleText checked={props.checked === true}>{props.rightTitle}</ToggleText>
             </ToggleWrap>
         </Container>
     );

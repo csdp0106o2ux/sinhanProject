@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 import { ReactComponent as SideArrow } from '../../../../assets/icons/graySideArrow.svg';
@@ -50,7 +50,78 @@ const DateText = styled.span`
     color: #555;
 `;
 
-const ComplimentCard = () => {
+const ComplimentCard = (props) => {
+    const [listData, setListData] = useState([]);
+
+    const dummyData = [
+        {
+            id: 0,
+            status: 'good',
+            text: '차분하면서도 친절하게 말해주셨어요',
+            new: true,
+        },
+        {
+            id: 1,
+            status: 'good',
+            text: '차분하면서도 친절하게 말해주셨어요',
+            new: true,
+        },
+        {
+            id: 2,
+            status: 'good',
+            text: '차분하면서도 친절하게 말해주셨어요',
+        },
+        {
+            id: 3,
+            status: '칭찬VOC',
+            text: '차분하면서도 친절하게 말해주셨어요',
+        },
+        {
+            id: 4,
+            status: '칭찬VOC',
+            text: '차분하면서도 친절하게 말해주셨어요',
+        },
+    ];
+
+    const dummyData2 = [
+        {
+            id: 0,
+            status: '칭찬VOC',
+            text: '동료가 친절합니다.',
+            new: true,
+        },
+        {
+            id: 1,
+            status: '칭찬VOC',
+            text: '동료가 친절합니다.',
+            new: true,
+        },
+        {
+            id: 2,
+            status: 'good',
+            text: '동료가 친절합니다.',
+            new: true,
+        },
+        {
+            id: 3,
+            status: 'good',
+            text: '동료가 친절합니다.',
+        },
+        {
+            id: 4,
+            status: '칭찬VOC',
+            text: '동료가 친절합니다.',
+        },
+    ];
+
+    useEffect(() => {
+        if (props.toggle === false) {
+            setListData(dummyData);
+        } else {
+            setListData(dummyData2);
+        }
+    }, [props.toggle]);
+
     return (
         <Container>
             <SpaceWrap>
@@ -58,11 +129,12 @@ const ComplimentCard = () => {
                     <Title>고객/직원 칭찬 (응원) 의견</Title>
                     <SideArrow />
                 </TitleWrap>
-                <ToggleSwitch />
+                <ToggleSwitch width={102} leftTitle={'고객'} rightTitle={'직원'} checked={props.toggle} setToggle={props.setToggle} />
             </SpaceWrap>
             <DateText>12.13. 기준/월</DateText>
-            <ComplimentList />
-            <ComplimentList />
+            {listData.map((item) => (
+                <ComplimentList key={item.id} status={item.status} text={item.text} new={item.new} />
+            ))}
         </Container>
     );
 };
