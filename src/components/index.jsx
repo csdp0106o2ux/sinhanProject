@@ -7,3 +7,4 @@ export { default as KeywordCard } from './keywordCard/KeywordCard';
 export { default as ToggleSwitch } from './toggleSwitch/ToggleSwitch';
 export { default as GoodCard } from './goodCard/GoodCard';
 export { default as GoodList } from './goodList/GoodList';
+export { default as IndexBar } from './indexBar/IndexBar';
