@@ -19,6 +19,7 @@ const GoodTab1 = () => {
     const [ComplimentToggle, setComplimentToggle] = useState(false);
     const [keywordToggle, setKeywordToggle] = useState(false);
     const [goodToggle, setGoodToggle] = useState(false);
+    const [selectGraph, setSelectGraph] = useState('Good Score');
 
     const dummyData = [
         {
@@ -126,24 +127,29 @@ const GoodTab1 = () => {
                                     score={item.score}
                                     unit={item.unit}
                                     margin={item.id === 5}
-                                    // onClick={() => {
-                                    //     setScore(
-                                    //         score.map((list) => {
-                                    //             if (item.checked === list.checked) {
-                                    //                 return {
-                                    //                     ...list,
-                                    //                     checked: false,
-                                    //                 };
-                                    //             }
-                                    //         })
-                                    //     );
-                                    // }}
+                                    onClick={() => {
+                                        setScore(
+                                            score.map((list) => {
+                                                if (item.id === list.id) {
+                                                    setSelectGraph(list.title);
+                                                    return {
+                                                        ...list,
+                                                        checked: true,
+                                                    };
+                                                }
+
+                                                return {
+                                                    ...list,
+                                                    checked: false,
+                                                };
+                                            })
+                                        );
+                                    }}
                                 />
                             ))}
                         </FlexWrap>
                         <GraphWrap>
-                            {/* <ExperienceCard /> */}
-                            <ScoreGraphCard />
+                            {selectGraph === 'Good Score' ? <ScoreGraphCard /> : <ExperienceCard />}
                             <RadarCard />
                         </GraphWrap>
                     </ScoreWrap>
