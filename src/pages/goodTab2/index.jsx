@@ -165,18 +165,23 @@ const GoodTab2 = () => {
                                         score={item.score}
                                         unit={item.unit}
                                         margin={item.id === 4}
-                                        // onClick={() => {
-                                        //     setScore(
-                                        //         score.map((list) => {
-                                        //             if (item.checked === list.checked) {
-                                        //                 return {
-                                        //                     ...list,
-                                        //                     checked: false,
-                                        //                 };
-                                        //             }
-                                        //         })
-                                        //     );
-                                        // }}
+                                        onClick={() => {
+                                            setScore(
+                                                score.map((list) => {
+                                                    if (item.id === list.id) {
+                                                        return {
+                                                            ...list,
+                                                            checked: true,
+                                                        };
+                                                    }
+
+                                                    return {
+                                                        ...list,
+                                                        checked: false,
+                                                    };
+                                                })
+                                            );
+                                        }}
                                     />
                                 ))}
                             </ScoreCardWrap>
