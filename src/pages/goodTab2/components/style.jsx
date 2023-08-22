@@ -80,15 +80,17 @@ const DropDownText = styled.span`
 `;
 
 const ScoreWrap = styled.div`
-    padding: 20px;
-    border-radius: 16px;
-    background-color: #e8f5fe;
     width: 1140px;
     height: 660px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 16px;
+    background-color: #e8f5fe;
 `;
 
 const ScoreAreaWrap = styled.div`
-    margin-bottom: 12px;
+    margin-right: 20px;
+    padding: 20px 0 0 20px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -107,6 +109,7 @@ const ScoreTitle = styled.span`
 `;
 
 const DateText = styled.span`
+    margin-bottom: 12px;
     opacity: 0.9;
     font-family: NanumSquareOTFR;
     font-size: 14px;
@@ -126,10 +129,24 @@ const OpacityWrap = styled.div`
     background-image: linear-gradient(to bottom, rgba(232, 245, 254, 0) 0%, #e8f5fe 50%);
 `;
 
+const GoodScoreWrap = styled.div`
+    padding: 20px;
+    width: 850px;
+    height: 660px;
+    border-radius: 16px;
+    box-shadow: -4px 0 12px 0 rgba(27, 131, 242, 0.1);
+    background-color: #f3faff;
+`;
+
+const ScoreCardWrap = styled.div`
+    display: flex;
+    margin-bottom: 10px;
+`;
+
 const NoticeWrap = styled.div`
     margin-left: 20px;
     display: flex;
     flex-direction: column;
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, NoticeWrap };
+export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap, NoticeWrap };

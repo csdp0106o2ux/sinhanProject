@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { styled } from 'styled-components';
 
 import { DropDown, GoodCard, ScoreGraphCard, TabBar } from '../../components';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap } from './components/style';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap } from './components/style';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import AreaCard from './components/areaCard/AreaCard';
+import ScoreCard from '../goodTab1/components/scoreCard/ScoreCard';
+import StaffCard from './components/staffCard/StaffCard';
 
 const GoodTab2 = () => {
     const [dropDown, setDropDown] = useState([]);
     const [areaData, setAreaData] = useState([]);
+    const [score, setScore] = useState([]);
 
     const dummyData = [
         {
@@ -68,8 +70,48 @@ const GoodTab2 = () => {
         },
     ];
 
+    const scoreDummyData = [
+        {
+            id: 0,
+            title: 'Good Score',
+            score: '84.1',
+            unit: '점',
+            checked: true,
+        },
+        {
+            id: 1,
+            title: 'Good 경험률',
+            score: '84.1',
+            unit: '%',
+            checked: false,
+        },
+        {
+            id: 2,
+            title: 'Good 경험지수',
+            score: '84.1',
+            unit: '점',
+            checked: false,
+        },
+        {
+            id: 3,
+            title: '팀워크',
+            score: '84.1',
+            unit: '점',
+            checked: false,
+        },
+        {
+            id: 4,
+            title: '칭찬VOC',
+            score: '5',
+            unit: '건',
+            checked: false,
+        },
+    ];
+
     useEffect(() => {
         setDropDown(dummyData);
+        setAreaData(areaDummyData);
+        setScore(scoreDummyData);
     }, []);
 
     return (
@@ -102,13 +144,42 @@ const GoodTab2 = () => {
                     <ScoreAreaWrap>
                         <ScoreTitle>Good 종합</ScoreTitle>
                         <DateText>12.13. 기준/월</DateText>
-                        {areaDummyData.map((item) => (
+                        {areaData.map((item) => (
                             <AreaCard key={item.id} id={item.id} title={item.title} disabled={item.disabled} checked={item.checked} />
                         ))}
                         <OpacityWrap />
                     </ScoreAreaWrap>
+                    <GoodScoreWrap>
+                        <ScoreCardWrap>
+                            {score?.map((item) => (
+                                <ScoreCard
+                                    goodTab2
+                                    key={item.id}
+                                    checked={item.checked}
+                                    title={item.title}
+                                    score={item.score}
+                                    unit={item.unit}
+                                    // onClick={() => {
+                                    //     setScore(
+                                    //         score.map((list) => {
+                                    //             if (item.checked === list.checked) {
+                                    //                 return {
+                                    //                     ...list,
+                                    //                     checked: false,
+                                    //                 };
+                                    //             }
+                                    //         })
+                                    //     );
+                                    // }}
+                                />
+                            ))}
+                        </ScoreCardWrap>
+                        <ScoreGraphCard goodTab2 />
+                    </GoodScoreWrap>
                 </ScoreWrap>
-                <NoticeWrap></NoticeWrap>
+                <NoticeWrap>
+                    <StaffCard />
+                </NoticeWrap>
             </FlexWrap>
         </Container>
     );

@@ -6,7 +6,7 @@ import GraphImage from '../../assets/images/goodScoreGraph.png';
 const Container = styled.div`
     margin-right: 10px;
     padding: 20px;
-    width: 685px;
+    width: ${(props) => (props.goodTab2 ? '810px' : '685px')};
     height: 521px;
     border-radius: 21px;
     box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1);
@@ -82,9 +82,9 @@ const LabelText = styled.span`
     color: ${(props) => props.theme.dimGray};
 `;
 
-const ScoreGraphCard = () => {
+const ScoreGraphCard = (props) => {
     return (
-        <Container>
+        <Container goodTab2={props.goodTab2}>
             <TitleWrap>
                 <Title>Good Score</Title>
                 <FlexWrap>
