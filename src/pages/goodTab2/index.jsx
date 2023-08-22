@@ -7,8 +7,10 @@ import { ReactComponent as Notification } from '../../assets/icons/combinedShape
 import AreaCard from './components/areaCard/AreaCard';
 import ScoreCard from '../goodTab1/components/scoreCard/ScoreCard';
 import StaffCard from './components/staffCard/StaffCard';
+import { useNavigate } from 'react-router-dom';
 
 const GoodTab2 = () => {
+    const navigate = useNavigate();
     const [dropDown, setDropDown] = useState([]);
     const [areaData, setAreaData] = useState([]);
     const [score, setScore] = useState([]);
@@ -122,7 +124,7 @@ const GoodTab2 = () => {
             <Wrapper>
                 <BoardTitleWrap>
                     <FlexWrap>
-                        <BoardTitle>My Good</BoardTitle>
+                        <BoardTitle onClick={() => navigate('/goodTab1')}>My Good</BoardTitle>
                         <BoardTitle right checked>
                             Our Good
                         </BoardTitle>
@@ -162,6 +164,7 @@ const GoodTab2 = () => {
                                         title={item.title}
                                         score={item.score}
                                         unit={item.unit}
+                                        margin={item.id === 4}
                                         // onClick={() => {
                                         //     setScore(
                                         //         score.map((list) => {

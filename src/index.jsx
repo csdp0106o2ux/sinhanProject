@@ -4,15 +4,18 @@ import { ThemeProvider } from 'styled-components';
 import App from './App';
 import './styles/fonts/Font.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { GlobalStyles, theme } from './styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <App />
-    </ThemeProvider>
+    <Router>
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <App />
+        </ThemeProvider>
+    </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
