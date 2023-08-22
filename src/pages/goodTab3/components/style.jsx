@@ -1,7 +1,8 @@
 import { styled } from 'styled-components';
 
 const Container = styled.div`
-    width: 100%;
+    position: relative;
+    width: 1920px;
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(202, 237, 250, 0) 0%, #caedfa 100%);
 `;
