@@ -15,6 +15,7 @@ const GoodTab2 = () => {
     const [areaData, setAreaData] = useState([]);
     const [score, setScore] = useState([]);
     const [keywordToggle, setKeywordToggle] = useState(false);
+    const [selectTab, setSelectTab] = useState('진행');
 
     const dummyData = [
         {
@@ -150,7 +151,35 @@ const GoodTab2 = () => {
                             <ScoreTitle>Good 종합</ScoreTitle>
                             <DateText>12.13. 기준/월</DateText>
                             {areaData.map((item) => (
-                                <AreaCard key={item.id} id={item.id} title={item.title} disabled={item.disabled} checked={item.checked} />
+                                <AreaCard
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    disabled={item.disabled}
+                                    checked={item.checked}
+                                    onClick={() => {
+                                        setAreaData(
+                                            areaData.map((list) => {
+                                                if (item.disabled === false && item.id === list.id) {
+                                                    setSelectTab(list.title);
+                                                    return {
+                                                        ...list,
+                                                        checked: true,
+                                                    };
+                                                }
+                                                if (item.disabled === false && item.id !== list.id) {
+                                                    return {
+                                                        ...list,
+                                                        checked: false,
+                                                    };
+                                                }
+                                                return {
+                                                    ...list,
+                                                };
+                                            })
+                                        );
+                                    }}
+                                />
                             ))}
                             <OpacityWrap />
                         </ScoreAreaWrap>
@@ -185,7 +214,7 @@ const GoodTab2 = () => {
                                     />
                                 ))}
                             </ScoreCardWrap>
-                            <ScoreGraphCard goodTab2 />
+                            <ScoreGraphCard status={selectTab} goodTab2 />
                         </GoodScoreWrap>
                     </ScoreWrap>
                     <NoticeWrap>

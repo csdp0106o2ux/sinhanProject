@@ -46,7 +46,7 @@ const SubText = styled.p`
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
-    color: ${(props) => (props.checked ? '#333' : '#fff')};
+    color: ${(props) => (props.checked ? '#fff' : '#333')};
 `;
 
 const RateWrap = styled.div`
@@ -68,7 +68,7 @@ const RateText = styled.span`
 
 const AreaCard = (props) => {
     return (
-        <Container checked={props.checked} disabled={props.disabled}>
+        <Container checked={props.checked} disabled={props.disabled} onClick={props.onClick}>
             <FlexWrap>
                 <TitleWrap>
                     <Title checked={props.checked} disabled={props.disabled}>

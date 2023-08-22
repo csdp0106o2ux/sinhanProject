@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 import GraphImage from '../../assets/images/goodScoreGraph.png';
+import GraphImageAll from '../../assets/images/goodScoreGraph2.png';
 
 const Container = styled.div`
     margin-right: 10px;
@@ -47,9 +48,8 @@ const SubText = styled.span`
 `;
 
 const Graph = styled.img`
-    width: 645px;
+    width: ${(props) => (props.goodTab2 ? '770px' : '645px')};
     height: 406px;
-    object-fit: contain;
 `;
 
 const FlexWrap = styled.div`
@@ -103,7 +103,7 @@ const ScoreGraphCard = (props) => {
                 <SubText pictonBlue>26</SubText>
                 <SubText>명이 Good을 주셨습니다.</SubText>
             </SubTextWrap>
-            <Graph src={GraphImage} />
+            {props.status === '진행' ? <Graph goodTab2={props.goodTab2} src={GraphImageAll} /> : <Graph goodTab2={props.goodTab2} src={GraphImage} />}
         </Container>
     );
 };
