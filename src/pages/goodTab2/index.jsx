@@ -6,6 +6,7 @@ import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArro
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import AreaCard from './components/areaCard/AreaCard';
 import ScoreCard from '../goodTab1/components/scoreCard/ScoreCard';
+import StaffCard from './components/staffCard/StaffCard';
 
 const GoodTab2 = () => {
     const [dropDown, setDropDown] = useState([]);
@@ -176,7 +177,9 @@ const GoodTab2 = () => {
                         <ScoreGraphCard goodTab2 />
                     </GoodScoreWrap>
                 </ScoreWrap>
-                <NoticeWrap></NoticeWrap>
+                <NoticeWrap>
+                    <StaffCard />
+                </NoticeWrap>
             </FlexWrap>
         </Container>
     );

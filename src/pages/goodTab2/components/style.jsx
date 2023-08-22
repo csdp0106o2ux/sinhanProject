@@ -89,6 +89,7 @@ const ScoreWrap = styled.div`
 `;
 
 const ScoreAreaWrap = styled.div`
+    margin-right: 20px;
     padding: 20px 0 0 20px;
     position: relative;
     display: flex;
@@ -129,9 +130,9 @@ const OpacityWrap = styled.div`
 `;
 
 const GoodScoreWrap = styled.div`
+    padding: 20px;
     width: 850px;
     height: 660px;
-    padding: 20px;
     border-radius: 16px;
     box-shadow: -4px 0 12px 0 rgba(27, 131, 242, 0.1);
     background-color: #f3faff;

@@ -4,25 +4,26 @@ import { styled } from 'styled-components';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
 `;
 
 const ImageWrap = styled.div`
     margin-bottom: 10px;
     position: relative;
+    display: flex;
+    justify-content: center;
 `;
 
 const StaffImage = styled.img`
     width: 115px;
     height: 128px;
-    margin: 0 0 10px;
-    padding: 102px 30px 0 29px;
     object-fit: contain;
 `;
 
 const StaffTitleWrap = styled.div`
+    position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    bottom: 0;
     padding: 4px 6px;
     border-radius: 2px;
     background-color: ${(props) => (props.title === '우수사원' ? props.theme.lightningYellow : props.title === '우수고객중심리더' ? props.theme.nightDodgerBlue : props.title === '숨은HERO' && props.theme.shamrock)};
@@ -36,8 +37,7 @@ const StaffTitle = styled.span`
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
-    text-align: center;
-    color: #fff;
+    color: ${(props) => props.theme.white};
 `;
 
 const StaffName = styled.span`
@@ -49,7 +49,6 @@ const StaffName = styled.span`
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
-    text-align: center;
     color: ${(props) => props.theme.nero};
 `;
 
@@ -61,7 +60,6 @@ const StaffArea = styled.span`
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
-    text-align: center;
     color: ${(props) => props.theme.dimGray};
 `;
 
@@ -69,8 +67,8 @@ const StaffImageCard = (props) => {
     return (
         <Container>
             <ImageWrap>
-                <StaffImage />
-                <StaffTitleWrap>
+                <StaffImage src={props.img} />
+                <StaffTitleWrap title={props.title}>
                     <StaffTitle>{props.title}</StaffTitle>
                 </StaffTitleWrap>
             </ImageWrap>
