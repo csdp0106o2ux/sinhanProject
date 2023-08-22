@@ -7,9 +7,9 @@ import Human2 from '../../../../assets/images/human2.png';
 import Human3 from '../../../../assets/images/human3.png';
 
 const Container = styled.div`
+    margin-bottom: 10px;
     width: 560px;
     height: 277px;
-    margin: 20px 31px 10px 20px;
     padding: 20px 20px 20px 20px;
     border-radius: 16px;
     background-color: #f3faff;

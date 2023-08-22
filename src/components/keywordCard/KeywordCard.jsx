@@ -124,7 +124,7 @@ const KeywordCard = (props) => {
         <Container>
             <SpaceWrap>
                 <TitleWrap>
-                    <Title>My 키워드</Title>
+                    <Title>{props.cardTitle}</Title>
                     <SideArrow />
                 </TitleWrap>
                 <ToggleSwitch width={120} leftTitle={'Best'} rightTitle={'Worst'} checked={props.toggle} setToggle={props.setToggle} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { DropDown, GoodCard, ScoreGraphCard, TabBar } from '../../components';
+import { DropDown, GoodCard, KeywordCard, ScoreGraphCard, TabBar } from '../../components';
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap } from './components/style';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
@@ -12,6 +12,7 @@ const GoodTab2 = () => {
     const [dropDown, setDropDown] = useState([]);
     const [areaData, setAreaData] = useState([]);
     const [score, setScore] = useState([]);
+    const [keywordToggle, setKeywordToggle] = useState(false);
 
     const dummyData = [
         {
@@ -179,6 +180,10 @@ const GoodTab2 = () => {
                 </ScoreWrap>
                 <NoticeWrap>
                     <StaffCard />
+                    {/* 키워드카드 good1 페이지 good2 페이지 조건 부여 */}
+                    <KeywordCard cardTitle={'우리지점 키워드'} toggle={keywordToggle} setToggle={setKeywordToggle} />
+                    <GoodCard cardTitle={'월간 Good 스토리'} goodTab2 />
+                    {/* 월간굿스토리 good1 페이지 good2 페이지 조건 부여 */}
                 </NoticeWrap>
             </FlexWrap>
         </Container>
