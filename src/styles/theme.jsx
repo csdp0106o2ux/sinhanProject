@@ -16,6 +16,7 @@ const theme = {
     darkGray: '#595959',
     lightDimGray: '#727272',
     dimGray: '#555555',
+    shamrock: '#36C9AF',
     fruitSalad: '#3DA141',
     lightAliceBlue: '#EDF2F7',
     aliceBlue: '#F3FAFF',
