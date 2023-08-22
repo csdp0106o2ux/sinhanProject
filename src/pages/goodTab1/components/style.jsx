@@ -2,13 +2,16 @@ import { styled } from 'styled-components';
 
 const Container = styled.div`
     position: relative;
-    padding: 98px 60px 20px 140px;
     width: 1920px;
     height: 100vh;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.2);
     background-image: linear-gradient(to bottom, rgba(202, 237, 250, 0) 0%, #caedfa 100%);
+`;
+
+const Wrapper = styled.div`
+    padding: 98px 60px 20px 140px;
 `;
 
 const BoardTitleWrap = styled.div`
@@ -18,6 +21,11 @@ const BoardTitleWrap = styled.div`
 `;
 
 const FlexWrap = styled.div`
+    display: flex;
+`;
+
+const GraphWrap = styled.div`
+    margin-top: 10px;
     display: flex;
 `;
 
@@ -93,4 +101,4 @@ const NoticeWrap = styled.div`
     flex-direction: column;
 `;
 
-export { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap };
+export { Container, Wrapper, BoardTitleWrap, FlexWrap, GraphWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap };

@@ -2,11 +2,10 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.div`
+    padding: 16px 0 16px 20px;
+    margin-right: ${(props) => (props.margin ? '0px' : '10px')};
     width: ${(props) => (props.goodTab2 ? '154px' : '175px')};
     height: 89px;
-    margin-right: 10px;
-    /* margin: 0 10px 10px; */
-    padding: 16px 0 16px 20px;
     border-radius: 16px;
     ${({ checked }) => (checked ? 'box-shadow: 0 6px 8px 0 rgba(27, 131, 242, 0.2), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1), inset 0 13px 6px -10px rgba(255, 255, 255, 0.35);  background-image: linear-gradient(304deg, #a0d0f4 100%, #a0d0f4 100%, #5cb8ff 13%, #3495df -9%);' : 'background-color: rgba(255, 255, 255, 0.9);')};
 `;
@@ -52,7 +51,7 @@ const UnitText = styled.span`
 
 const ScoreCard = (props) => {
     return (
-        <Container goodTab2={props.goodTab2} checked={props.checked} onClick={props.onClick}>
+        <Container goodTab2={props.goodTab2} margin={props.margin} checked={props.checked} onClick={props.onClick}>
             <Title checked={props.checked}>{props.title}</Title>
             <TextWrap>
                 <NumText checked={props.checked}>{props.score}</NumText>

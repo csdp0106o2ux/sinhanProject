@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import { DropDown, GoodCard, KeywordCard, ScoreGraphCard, TabBar } from '../../components';
-import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap } from './components/style';
+import { DropDown, GoodCard, IndexBar, KeywordCard, ScoreGraphCard, TabBar } from '../../components';
+import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap, Wrapper } from './components/style';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
 import AreaCard from './components/areaCard/AreaCard';
 import ScoreCard from '../goodTab1/components/scoreCard/ScoreCard';
 import StaffCard from './components/staffCard/StaffCard';
+import { useNavigate } from 'react-router-dom';
 
 const GoodTab2 = () => {
+    const navigate = useNavigate();
     const [dropDown, setDropDown] = useState([]);
     const [areaData, setAreaData] = useState([]);
     const [score, setScore] = useState([]);
@@ -117,75 +119,79 @@ const GoodTab2 = () => {
 
     return (
         <Container>
+            <IndexBar experience />
             <TabBar />
-            <BoardTitleWrap>
+            <Wrapper>
+                <BoardTitleWrap>
+                    <FlexWrap>
+                        <BoardTitle onClick={() => navigate('/goodTab1')}>My Good</BoardTitle>
+                        <BoardTitle right checked>
+                            Our Good
+                        </BoardTitle>
+                    </FlexWrap>
+                    <BannerWrap>
+                        <IconWrap>
+                            <Notification />
+                        </IconWrap>
+                        <BannerText>금일 현 시간의 Good 경험 15건 (▲+2), 칭찬 VOC 32건 (▲+12) 입니다.</BannerText>
+                        <div style={{ flex: 1 }} />
+                        <BlueSideArrow />
+                    </BannerWrap>
+                </BoardTitleWrap>
+                <DropDownWrap>
+                    <DropDownText>서울권역. 서초 커뮤니티/ 남부터미널 기업금융센터 (출장소 포함)</DropDownText>
+                    {dropDown?.map((item) => (
+                        <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
+                    ))}
+                </DropDownWrap>
                 <FlexWrap>
-                    <BoardTitle>My Good</BoardTitle>
-                    <BoardTitle right checked>
-                        Our Good
-                    </BoardTitle>
-                </FlexWrap>
-                <BannerWrap>
-                    <IconWrap>
-                        <Notification />
-                    </IconWrap>
-                    <BannerText>금일 현 시간의 Good 경험 15건 (▲+2), 칭찬 VOC 32건 (▲+12) 입니다.</BannerText>
-                    <div style={{ flex: 1 }} />
-                    <BlueSideArrow />
-                </BannerWrap>
-            </BoardTitleWrap>
-            <DropDownWrap>
-                <DropDownText>서울권역. 서초 커뮤니티/ 남부터미널 기업금융센터 (출장소 포함)</DropDownText>
-                {dropDown?.map((item) => (
-                    <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
-                ))}
-            </DropDownWrap>
-            <FlexWrap>
-                <ScoreWrap>
-                    <ScoreAreaWrap>
-                        <ScoreTitle>Good 종합</ScoreTitle>
-                        <DateText>12.13. 기준/월</DateText>
-                        {areaData.map((item) => (
-                            <AreaCard key={item.id} id={item.id} title={item.title} disabled={item.disabled} checked={item.checked} />
-                        ))}
-                        <OpacityWrap />
-                    </ScoreAreaWrap>
-                    <GoodScoreWrap>
-                        <ScoreCardWrap>
-                            {score?.map((item) => (
-                                <ScoreCard
-                                    goodTab2
-                                    key={item.id}
-                                    checked={item.checked}
-                                    title={item.title}
-                                    score={item.score}
-                                    unit={item.unit}
-                                    // onClick={() => {
-                                    //     setScore(
-                                    //         score.map((list) => {
-                                    //             if (item.checked === list.checked) {
-                                    //                 return {
-                                    //                     ...list,
-                                    //                     checked: false,
-                                    //                 };
-                                    //             }
-                                    //         })
-                                    //     );
-                                    // }}
-                                />
+                    <ScoreWrap>
+                        <ScoreAreaWrap>
+                            <ScoreTitle>Good 종합</ScoreTitle>
+                            <DateText>12.13. 기준/월</DateText>
+                            {areaData.map((item) => (
+                                <AreaCard key={item.id} id={item.id} title={item.title} disabled={item.disabled} checked={item.checked} />
                             ))}
-                        </ScoreCardWrap>
-                        <ScoreGraphCard goodTab2 />
-                    </GoodScoreWrap>
-                </ScoreWrap>
-                <NoticeWrap>
-                    <StaffCard />
-                    {/* 키워드카드 good1 페이지 good2 페이지 조건 부여 */}
-                    <KeywordCard cardTitle={'우리지점 키워드'} toggle={keywordToggle} setToggle={setKeywordToggle} />
-                    <GoodCard cardTitle={'월간 Good 스토리'} goodTab2 />
-                    {/* 월간굿스토리 good1 페이지 good2 페이지 조건 부여 */}
-                </NoticeWrap>
-            </FlexWrap>
+                            <OpacityWrap />
+                        </ScoreAreaWrap>
+                        <GoodScoreWrap>
+                            <ScoreCardWrap>
+                                {score?.map((item) => (
+                                    <ScoreCard
+                                        goodTab2
+                                        key={item.id}
+                                        checked={item.checked}
+                                        title={item.title}
+                                        score={item.score}
+                                        unit={item.unit}
+                                        margin={item.id === 4}
+                                        // onClick={() => {
+                                        //     setScore(
+                                        //         score.map((list) => {
+                                        //             if (item.checked === list.checked) {
+                                        //                 return {
+                                        //                     ...list,
+                                        //                     checked: false,
+                                        //                 };
+                                        //             }
+                                        //         })
+                                        //     );
+                                        // }}
+                                    />
+                                ))}
+                            </ScoreCardWrap>
+                            <ScoreGraphCard goodTab2 />
+                        </GoodScoreWrap>
+                    </ScoreWrap>
+                    <NoticeWrap>
+                        <StaffCard />
+                        {/* 키워드카드 good1 페이지 good2 페이지 조건 부여 */}
+                        <KeywordCard cardTitle={'우리지점 키워드'} toggle={keywordToggle} setToggle={setKeywordToggle} />
+                        <GoodCard cardTitle={'월간 Good 스토리'} goodTab2 />
+                        {/* 월간굿스토리 good1 페이지 good2 페이지 조건 부여 */}
+                    </NoticeWrap>
+                </FlexWrap>
+            </Wrapper>
         </Container>
     );
 };
