@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CategoryLabel from './components/categoryLabel/CategoryLabel';
 import { Header, TabBar } from '../../components';
 import { Container, PaddingWrap, CategoryWrap, ResetText } from './components/style';
+import SearchAccodion from './components/searchAccodion/SearchAccodion';
 
 const GoodTab3 = () => {
     const [data, setData] = useState([]);
@@ -77,6 +78,7 @@ const GoodTab3 = () => {
                     ))}
                 </CategoryWrap>
             </PaddingWrap>
+            <SearchAccodion />
         </Container>
     );
 };
