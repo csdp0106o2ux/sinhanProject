@@ -77,8 +77,8 @@ const GoodTab3 = () => {
                         />
                     ))}
                 </CategoryWrap>
+                <SearchAccodion />
             </PaddingWrap>
-            <SearchAccodion />
         </Container>
     );
 };

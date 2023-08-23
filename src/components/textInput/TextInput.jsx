@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.div`
+    margin-right: ${({ marginRight }) => (marginRight ? `${marginRight}px` : '0px')};
     display: flex;
     flex-direction: column;
 `;
@@ -28,7 +29,7 @@ const Input = styled.input`
 
 const TextInput = (props) => {
     return (
-        <Container>
+        <Container marginRight={props.marginRight}>
             <Label>{props.label}</Label>
             <Input placeholder={props.placeholder} value={props.value} onChange={props.onChange} />
         </Container>
