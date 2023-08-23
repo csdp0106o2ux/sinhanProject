@@ -12,7 +12,7 @@ const PaddingWrap = styled.div`
 `;
 
 const CategoryWrap = styled.div`
-    margin-top: 30px;
+    margin: 30px 0 20px;
     display: flex;
     justify-content: space-between;
 `;

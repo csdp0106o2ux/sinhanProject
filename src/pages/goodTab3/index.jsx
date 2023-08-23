@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import CategoryLabel from './components/categoryLabel/CategoryLabel';
 import { Header, TabBar } from '../../components';
 import { Container, PaddingWrap, CategoryWrap, ResetText } from './components/style';
+import SearchAccodion from './components/searchAccodion/SearchAccodion';
+import TotalBoard from './components/totalBoard/TotalBoard';
 
 const GoodTab3 = () => {
     const [data, setData] = useState([]);
@@ -76,6 +78,8 @@ const GoodTab3 = () => {
                         />
                     ))}
                 </CategoryWrap>
+                <SearchAccodion />
+                <TotalBoard />
             </PaddingWrap>
         </Container>
     );
