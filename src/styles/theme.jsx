@@ -20,6 +20,8 @@ const theme = {
     fruitSalad: '#3DA141',
     lightAliceBlue: '#EDF2F7',
     aliceBlue: '#F3FAFF',
+    grayAliceBlue: '#F8FBFC',
+    lightPictonBlue: '#4BA1E3',
     pictonBlue: '#4892E1',
     summerSky: '#3495DF',
     dodgerBlue: '#0091EA',

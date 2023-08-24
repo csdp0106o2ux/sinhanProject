@@ -31,7 +31,7 @@ const ContentsText = styled.p`
     line-height: 1.5;
     letter-spacing: normal;
     color: #555;
-    ${({ asdfasdfasdf }) => asdfasdfasdf && 'margin-top: 3px;'}
+    ${({ marginLeft }) => marginLeft && 'margin-top: 3px;'}
 `;
 
 const TotalBoard = (props) => {
@@ -39,7 +39,7 @@ const TotalBoard = (props) => {
         <Container>
             <TitleWrap>
                 {props.checked ? <CheckTrue /> : <CheckFalse />}
-                <ContentsText asdfasdfasdf>진행상태</ContentsText>
+                <ContentsText marginLeft>진행상태</ContentsText>
             </TitleWrap>
             <BoardList />
         </Container>
