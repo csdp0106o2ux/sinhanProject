@@ -5,12 +5,14 @@ import GoodTab1 from './pages/goodTab1';
 import GoodTab2 from './pages/goodTab2';
 import GoodTab3 from './pages/goodTab3';
 import { Fragment } from 'react';
+import SideBar from './layout/SideBar';
 
 function App() {
     const location = useLocation();
     return (
         <Fragment>
             <div className="App">
+                <SideBar />
                 <Routes location={location} key={location.pathname}>
                     {/* <TabBar /> */}
                     <Route path="/goodTab1" element={<GoodTab1 />} />
