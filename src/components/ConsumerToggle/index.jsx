@@ -5,13 +5,14 @@ const Container = styled.div`
     width: 248px;
     height: 38px;
     display: flex;
+    justify-content: space-between;
     padding: 4px 28px 4px 4px;
     border-radius: 8px;
     background-color: ${(props) => props.theme.grayAliceBlue};
 `;
 
 const LabelWrap = styled.div`
-    width: 115px;
+    /* width: 115px; */
     height: 30px;
     padding: 7px 23px 7px 24px;
     border-radius: 8px;
@@ -32,11 +33,11 @@ const LabelText = styled.span`
 
 const ConsumerToggle = (props) => {
     return (
-        <Container>
-            <LabelWrap checked={props.checked}>
-                <LabelText checked={props.checked}>소비자 보호</LabelText>
+        <Container style={props.style}>
+            <LabelWrap checked={!props.checked} onClick={props.onLeftClick}>
+                <LabelText checked={!props.checked}>소비자 보호</LabelText>
             </LabelWrap>
-            <LabelWrap checked={props.checked}>
+            <LabelWrap checked={props.checked} onClick={props.onRightClick}>
                 <LabelText checked={props.checked}>소비자 지원</LabelText>
             </LabelWrap>
         </Container>

@@ -6,6 +6,7 @@ const size = {
 
 const theme = {
     white: '#FFFFFF',
+    whiteSmoke: '#F5F5F5',
     lightningYellow: '#F9A824',
     whisper: '#EDEDED',
     solitude: '#E9ECEF',

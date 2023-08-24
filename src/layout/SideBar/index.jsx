@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
+import ConsumerToggle from '../../components/ConsumerToggle';
 import Symbol from '../../assets/images/shinhanSymbol.png';
 import { ReactComponent as DeskTopOn } from '../../assets/icons/desktopOn.svg';
 import { ReactComponent as PersonOn } from '../../assets/icons/personOn.svg';
+import { ReactComponent as ToggleOn } from '../../assets/icons/toggleOn.svg';
+import { ReactComponent as ToggleOff } from '../../assets/icons/toggleOff.svg';
 
 const Container = styled.div`
     width: 80px;
@@ -108,9 +111,32 @@ const Person = styled(PersonOn)`
     }
 `;
 
+const ToggleWrap = styled.div`
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+`;
+
+const ToggleButton = styled.button`
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+`;
+
 const SideBar = () => {
+    const [hover, setHover] = useState(false);
+    const [toggle, setToggle] = useState(false);
+
+    const handlerHover = () => {
+        setHover(true);
+    };
+
+    const handlerOutHover = () => {
+        setHover(false);
+    };
+
     return (
-        <Container>
+        <Container onMouseOver={handlerHover} onMouseOut={handlerOutHover}>
             <TopWrap>
                 <SymbolWrap>
                     <SymbolImage src={Symbol} />
@@ -131,6 +157,10 @@ const SideBar = () => {
                     </div>
                     <ListText>고객 경험 분석 TOOl</ListText>
                 </TopList>
+                <ToggleWrap>
+                    <ToggleButton style={{ display: hover ? 'none' : 'flex' }}>{toggle ? <ToggleOn /> : <ToggleOff />}</ToggleButton>
+                    <ConsumerToggle style={{ display: hover ? 'flex' : 'none' }} checked={toggle} onLeftClick={() => setToggle(false)} onRightClick={() => setToggle(true)} />
+                </ToggleWrap>
             </TopWrap>
         </Container>
     );
