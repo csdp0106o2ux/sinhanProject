@@ -11,6 +11,7 @@ import KeywordList from '../../components/keywordList/KeywordList';
 import ComplimentCard from './components/complimentCard/ComplimentCard';
 import ExperienceCard from './components/experienceCard/ExperienceCard';
 import { useNavigate } from 'react-router-dom';
+import BackView from '../../components/BackView';
 
 const GoodTab1 = () => {
     const navigate = useNavigate();
