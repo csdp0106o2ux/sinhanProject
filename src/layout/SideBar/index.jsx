@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 import ConsumerToggle from '../../components/ConsumerToggle';
+import SideBarAccodion from '../../components/SideBarAccodion';
 import Symbol from '../../assets/images/shinhanSymbol.png';
 import { ReactComponent as DeskTopOn } from '../../assets/icons/desktopOn.svg';
 import { ReactComponent as PersonOn } from '../../assets/icons/personOn.svg';
 import { ReactComponent as ToggleOn } from '../../assets/icons/toggleOn.svg';
 import { ReactComponent as ToggleOff } from '../../assets/icons/toggleOff.svg';
+import { ReactComponent as SearchOn } from '../../assets/icons/searchOn.svg';
 
 const Container = styled.div`
     width: 80px;
@@ -112,7 +114,8 @@ const Person = styled(PersonOn)`
 `;
 
 const ToggleWrap = styled.div`
-    margin-top: 34px;
+    margin-top: 30px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: center;
 `;
@@ -126,6 +129,19 @@ const ToggleButton = styled.button`
 const SideBar = () => {
     const [hover, setHover] = useState(false);
     const [toggle, setToggle] = useState(false);
+    const [accodion, setAccodion] = useState([]);
+
+    const accodionDummy = [
+        {
+            id: 0,
+            title: '조회',
+            icon: <SearchOn />,
+        },
+    ];
+
+    useEffect(() => {
+        setAccodion(accodionDummy);
+    }, []);
 
     const handlerHover = () => {
         setHover(true);
@@ -161,6 +177,9 @@ const SideBar = () => {
                     <ToggleButton style={{ display: hover ? 'none' : 'flex' }}>{toggle ? <ToggleOn /> : <ToggleOff />}</ToggleButton>
                     <ConsumerToggle style={{ display: hover ? 'flex' : 'none' }} checked={toggle} onLeftClick={() => setToggle(false)} onRightClick={() => setToggle(true)} />
                 </ToggleWrap>
+                {accodion.map((item) => (
+                    <SideBarAccodion hover={hover} key={item.id} title={item.title} icon={item.icon} />
+                ))}
             </TopWrap>
         </Container>
     );
