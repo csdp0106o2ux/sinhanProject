@@ -20,6 +20,7 @@ const theme = {
     shamrock: '#36C9AF',
     fruitSalad: '#3DA141',
     lightAliceBlue: '#EDF2F7',
+    lightGreyAliceBlue: '#ECF5FC',
     aliceBlue: '#F3FAFF',
     grayAliceBlue: '#F8FBFC',
     lightPictonBlue: '#4BA1E3',
