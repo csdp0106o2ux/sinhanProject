@@ -13,6 +13,7 @@ const Container = styled.div`
     border-bottom-right-radius: 30px;
     background-image: linear-gradient(to bottom, #fdfdfd, #fdfdfd), linear-gradient(275deg, #a0d0f4 100%, #a0d0f4 99%, #9bd4ff 58%, #47a9f4 19%, #4ba1e3 -1%);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
+    z-index: 2;
 `;
 
 const Tabs = styled.div`
