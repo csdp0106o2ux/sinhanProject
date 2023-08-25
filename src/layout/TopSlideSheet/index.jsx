@@ -6,6 +6,8 @@ import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArro
 import { ReactComponent as SideArrow } from '../../assets/icons/graySideArrow.svg';
 import Person from '../../assets/images/userImage.png';
 import TendencyLabel from './components/TendencyLabel';
+import Tag from './components/Tag';
+import GoodCard from './components/GoodCard';
 
 const Container = styled.div`
     margin-left: 80px;
@@ -20,6 +22,7 @@ const Container = styled.div`
 `;
 
 const InfomationCard = styled.div`
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
 `;
@@ -226,8 +229,14 @@ const TendencyLabelWrap = styled.div`
     justify-content: space-between;
 `;
 
+const TagWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 const TopSlideSheet = () => {
     const [tendency, setTendency] = useState([]);
+    const [tag, setTag] = useState([]);
 
     const tendencyDummy = [
         {
@@ -242,8 +251,28 @@ const TopSlideSheet = () => {
         },
     ];
 
+    const tagDummy = [
+        {
+            id: 0,
+            title: '빠른업무',
+        },
+        {
+            id: 1,
+            title: '친절한',
+        },
+        {
+            id: 2,
+            title: '경청하는',
+        },
+        {
+            id: 3,
+            title: '경청하는',
+        },
+    ];
+
     useEffect(() => {
         setTendency(tendencyDummy);
+        setTag(tagDummy);
     }, []);
 
     return (
@@ -300,8 +329,14 @@ const TopSlideSheet = () => {
                             <TendencyLabel key={item.id} title={item.title} subTitle={item.subTitle} />
                         ))}
                     </TendencyLabelWrap>
+                    <TagWrap>
+                        {tag.map((item) => (
+                            <Tag key={item.id} title={item.title} />
+                        ))}
+                    </TagWrap>
                 </GoodWrap>
             </InfomationCard>
+            <GoodCard />
         </Container>
     );
 };
