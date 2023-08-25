@@ -2,10 +2,11 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.div`
-    padding: 10px 30px;
     width: 256px;
     height: 44px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 12px;
     background-color: ${(props) => props.theme.white};
 `;

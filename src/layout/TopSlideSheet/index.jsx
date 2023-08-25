@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 import { ReactComponent as GaugeStar } from '../../assets/icons/gaugeStar.svg';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as SideArrow } from '../../assets/icons/graySideArrow.svg';
 import Person from '../../assets/images/userImage.png';
+import TendencyLabel from './components/TendencyLabel';
 
 const Container = styled.div`
     margin-left: 80px;
@@ -172,7 +173,7 @@ const ArrowWrap = styled(BlueSideArrow)`
 `;
 
 const GoodWrap = styled.div`
-    padding: 58px 20px 20px 20px;
+    padding: 20px;
     width: 560px;
     height: 162px;
     border-radius: 16px;
@@ -219,7 +220,32 @@ const FlexWrap = styled.div`
     align-items: center;
 `;
 
+const TendencyLabelWrap = styled.div`
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+`;
+
 const TopSlideSheet = () => {
+    const [tendency, setTendency] = useState([]);
+
+    const tendencyDummy = [
+        {
+            id: 0,
+            title: '자기주도적 개척형',
+            subTitle: '감정성향',
+        },
+        {
+            id: 1,
+            title: '기다림의 미학형',
+            subTitle: '소통성향',
+        },
+    ];
+
+    useEffect(() => {
+        setTendency(tendencyDummy);
+    }, []);
+
     return (
         <Container>
             <InfomationCard>
@@ -269,6 +295,11 @@ const TopSlideSheet = () => {
                             <RefreshButtonText>다시 분석하기</RefreshButtonText>
                         </RefreshButton>
                     </GoodTitleWrap>
+                    <TendencyLabelWrap>
+                        {tendency.map((item) => (
+                            <TendencyLabel key={item.id} title={item.title} subTitle={item.subTitle} />
+                        ))}
+                    </TendencyLabelWrap>
                 </GoodWrap>
             </InfomationCard>
         </Container>
