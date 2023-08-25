@@ -8,6 +8,7 @@ import Person from '../../assets/images/userImage.png';
 import TendencyLabel from './components/TendencyLabel';
 import Tag from './components/Tag';
 import GoodCard from './components/GoodCard';
+import ScrapCard from './components/ScrapCard';
 
 const Container = styled.div`
     margin-left: 80px;
@@ -22,7 +23,6 @@ const Container = styled.div`
 `;
 
 const InfomationCard = styled.div`
-    margin-right: 20px;
     display: flex;
     flex-direction: column;
 `;
@@ -337,6 +337,7 @@ const TopSlideSheet = () => {
                 </GoodWrap>
             </InfomationCard>
             <GoodCard />
+            <ScrapCard />
         </Container>
     );
 };

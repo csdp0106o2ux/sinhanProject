@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import GoodGraph from '../../../assets/images/goodCardGraph.png';
 
 const Container = styled.div`
+    margin: 0 20px;
     padding: 20px;
     width: 560px;
     height: 332px;
