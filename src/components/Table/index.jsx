@@ -79,10 +79,6 @@ const TableMain = styled.table`
             position: absolute;
         }
 `}
-
-        &:hover {
-            background-color: red;
-        }
     }
     thead {
         th {
