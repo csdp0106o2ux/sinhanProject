@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const TableWrap = styled.div`
     overflow: hidden;
     border-width: 1px 0;

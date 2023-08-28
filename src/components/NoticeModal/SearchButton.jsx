@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.button`
+    margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}px` : '0px')};
     padding: 8px 20px;
     height: 34px;
     border-radius: 8px;
@@ -23,7 +24,7 @@ const Title = styled.p`
 
 const SearchButton = (props) => {
     return (
-        <Container>
+        <Container marginBottom={props.marginBottom}>
             <Title>{props.title}</Title>
         </Container>
     );
