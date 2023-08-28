@@ -31,6 +31,26 @@ const GlobalStyles = createGlobalStyle`
         background: transparent;
         cursor: pointer;
     }
+
+    .scrollbar {
+        overflow-y: scroll; /*  */
+    }
+
+    /* 스크롤바의 폭 너비 */
+    .scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 48px;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background: white;
+        /*스크롤바 뒷 배경 색상*/
+    }
 `;
 
 export default GlobalStyles;

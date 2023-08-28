@@ -13,6 +13,7 @@ import ExperienceCard from './components/experienceCard/ExperienceCard';
 import { useNavigate } from 'react-router-dom';
 import BackView from '../../components/BackView';
 import TopSlideSheet from '../../layout/TopSlideSheet';
+import NoticeModal from '../../components/NoticeModal';
 
 const GoodTab1 = () => {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ const GoodTab1 = () => {
     const [keywordToggle, setKeywordToggle] = useState(false);
     const [goodToggle, setGoodToggle] = useState(false);
     const [selectGraph, setSelectGraph] = useState('Good Score');
+    const [openSlideSheet, setOpenSlideSheet] = useState(null);
 
     const dummyData = [
         {
@@ -94,8 +96,9 @@ const GoodTab1 = () => {
     return (
         <>
             <Container>
+                <NoticeModal />
                 <IndexBar experience />
-                <TabBar />
+                <TabBar openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
                 <Wrapper>
                     <BoardTitleWrap>
                         <FlexWrap>
@@ -163,9 +166,9 @@ const GoodTab1 = () => {
                         </NoticeWrap>
                     </FlexWrap>
                 </Wrapper>
-                <BackView>
-                    <TopSlideSheet />
-                </BackView>
+                {/* <BackView openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet}> */}
+                <TopSlideSheet openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
+                {/* </BackView> */}
             </Container>
         </>
     );

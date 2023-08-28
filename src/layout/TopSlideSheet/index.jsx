@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 
 import { ReactComponent as GaugeStar } from '../../assets/icons/gaugeStar.svg';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
@@ -9,6 +9,42 @@ import TendencyLabel from './components/TendencyLabel';
 import Tag from './components/Tag';
 import GoodCard from './components/GoodCard';
 import ScrapCard from './components/ScrapCard';
+
+const fadeIn = keyframes`
+        0% {
+            transform: translateY(-500px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+`;
+
+const fadeOut = keyframes`
+        0% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(-470px);
+        }
+`;
+
+const modalSettings = (openSlideSheet) => css`
+    animation: slide 1s ease;
+    visibility: ${openSlideSheet ? 'visible' : 'hidden'};
+    z-index: 15;
+    animation: ${openSlideSheet ? fadeIn : fadeOut} 1s ease;
+    transition: visibility 1s ease;
+`;
+
+const BackView = styled.div`
+    width: 1920px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* ${(props) => modalSettings(props.openSlideSheet)} */
+`;
 
 const Container = styled.div`
     margin-left: 80px;
@@ -20,6 +56,8 @@ const Container = styled.div`
     border-bottom-right-radius: 16px;
     box-shadow: 0 0 12px 0 rgba(0, 22, 46, 0.2);
     background-color: #e8f5fe;
+
+    ${(props) => modalSettings(props.openSlideSheet)}
 `;
 
 const InfomationCard = styled.div`
@@ -234,9 +272,10 @@ const TagWrap = styled.div`
     justify-content: space-between;
 `;
 
-const TopSlideSheet = () => {
+const TopSlideSheet = ({ openSlideSheet }) => {
     const [tendency, setTendency] = useState([]);
     const [tag, setTag] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const tendencyDummy = [
         {
@@ -275,70 +314,91 @@ const TopSlideSheet = () => {
         setTag(tagDummy);
     }, []);
 
+    useEffect(() => {
+        let timeoutId;
+        if (openSlideSheet) {
+            setIsOpen(true);
+        } else {
+            timeoutId = setTimeout(() => setIsOpen(false), 800);
+        }
+
+        return () => {
+            if (timeoutId !== undefined) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [openSlideSheet]);
+
+    if (!isOpen) {
+        return null;
+    }
+
     return (
-        <Container>
-            <InfomationCard>
-                <UserTitleWrap>
-                    <BadgeWrap>
-                        <BlueBadge>
-                            <BadgeText>Today</BadgeText>
-                        </BlueBadge>
-                        <DateText>2021.12.13 10:28:52</DateText>
-                    </BadgeWrap>
-                    <SpaceWrap>
-                        <LabelWrap>
-                            <Label>
-                                <LabelText>21 S매니저</LabelText>
-                            </Label>
-                            <Label green>
-                                <LabelText>12월 최우수직원</LabelText>
-                            </Label>
-                        </LabelWrap>
-                        <UserImage src={Person} />
-                    </SpaceWrap>
-                </UserTitleWrap>
-                <GaugeWrap>
-                    <IconWrap>
-                        <GaugeStar />
-                    </IconWrap>
-                    <StautsBarWrap>
-                        <StatusBar />
-                    </StautsBarWrap>
-                    <NumWrap>
-                        <NumText>8</NumText>
-                        <MaxNumText>/10개</MaxNumText>
-                    </NumWrap>
-                    <GreyLine />
-                    <MaxNumText>Reword{'\u00A0'}</MaxNumText>
-                    <NumText>3</NumText>
-                    <MaxNumText>개</MaxNumText>
-                    <ArrowWrap />
-                </GaugeWrap>
-                <GoodWrap>
-                    <GoodTitleWrap>
-                        <FlexWrap>
-                            <GoodTitle>나의 굿밸런스 성향</GoodTitle>
-                            <SideArrow />
-                        </FlexWrap>
-                        <RefreshButton>
-                            <RefreshButtonText>다시 분석하기</RefreshButtonText>
-                        </RefreshButton>
-                    </GoodTitleWrap>
-                    <TendencyLabelWrap>
-                        {tendency.map((item) => (
-                            <TendencyLabel key={item.id} title={item.title} subTitle={item.subTitle} />
-                        ))}
-                    </TendencyLabelWrap>
-                    <TagWrap>
-                        {tag.map((item) => (
-                            <Tag key={item.id} title={item.title} />
-                        ))}
-                    </TagWrap>
-                </GoodWrap>
-            </InfomationCard>
-            <GoodCard />
-            <ScrapCard />
-        </Container>
+        <BackView openSlideSheet={openSlideSheet}>
+            <Container openSlideSheet={openSlideSheet}>
+                <InfomationCard>
+                    <UserTitleWrap>
+                        <BadgeWrap>
+                            <BlueBadge>
+                                <BadgeText>Today</BadgeText>
+                            </BlueBadge>
+                            <DateText>2021.12.13 10:28:52</DateText>
+                        </BadgeWrap>
+                        <SpaceWrap>
+                            <LabelWrap>
+                                <Label>
+                                    <LabelText>21 S매니저</LabelText>
+                                </Label>
+                                <Label green>
+                                    <LabelText>12월 최우수직원</LabelText>
+                                </Label>
+                            </LabelWrap>
+                            <UserImage src={Person} />
+                        </SpaceWrap>
+                    </UserTitleWrap>
+                    <GaugeWrap>
+                        <IconWrap>
+                            <GaugeStar />
+                        </IconWrap>
+                        <StautsBarWrap>
+                            <StatusBar />
+                        </StautsBarWrap>
+                        <NumWrap>
+                            <NumText>8</NumText>
+                            <MaxNumText>/10개</MaxNumText>
+                        </NumWrap>
+                        <GreyLine />
+                        <MaxNumText>Reword{'\u00A0'}</MaxNumText>
+                        <NumText>3</NumText>
+                        <MaxNumText>개</MaxNumText>
+                        <ArrowWrap />
+                    </GaugeWrap>
+                    <GoodWrap>
+                        <GoodTitleWrap>
+                            <FlexWrap>
+                                <GoodTitle>나의 굿밸런스 성향</GoodTitle>
+                                <SideArrow />
+                            </FlexWrap>
+                            <RefreshButton>
+                                <RefreshButtonText>다시 분석하기</RefreshButtonText>
+                            </RefreshButton>
+                        </GoodTitleWrap>
+                        <TendencyLabelWrap>
+                            {tendency.map((item) => (
+                                <TendencyLabel key={item.id} title={item.title} subTitle={item.subTitle} />
+                            ))}
+                        </TendencyLabelWrap>
+                        <TagWrap>
+                            {tag.map((item) => (
+                                <Tag key={item.id} title={item.title} />
+                            ))}
+                        </TagWrap>
+                    </GoodWrap>
+                </InfomationCard>
+                <GoodCard />
+                <ScrapCard />
+            </Container>
+        </BackView>
     );
 };
 
