@@ -8,6 +8,7 @@ import SearchButton from './SearchButton';
 import TextArea from '../TextArea';
 import TextInput from '../textInput/TextInput';
 import DefaultButton from '../DefaultButton';
+import CenterLabel from './CenterLabel';
 
 const BackView = styled.div`
     padding: 108px 60px 40px 140px;
@@ -66,30 +67,22 @@ const InputWrapper = styled.div`
 `;
 
 const LabelWrap = styled.div`
-    padding: 10px 10px 0 10px;
+    padding: 10px 0 4px 10px;
+    width: 1680px;
+    /* height: 86px; */
+    display: flex;
     border: solid 1px #ededed;
     background-color: #f5f5f5;
     flex-wrap: wrap;
 `;
 
-const ContentsText = styled.p`
-    font-family: NanumSquareOTFR;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    color: #333;
-`;
-
-const ContnetsWrap = styled.div`
-    width: 1680px;
-    height: 364px;
+const BottomWrap = styled.div`
+    width: 1720px;
+    height: 64px;
     display: flex;
-    border-top-width: 2px;
-    border-top-style: solid;
-    border-top-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 -6px 6px 0 rgba(0, 66, 136, 0.03);
+    background-color: #fdfdfd;
 `;
 
 const NoticeModal = () => {
@@ -104,6 +97,45 @@ const NoticeModal = () => {
 2. 민원보상금 손실은(수익비용)과목 영업외 손실한 잡손으로 처리한다. 다만, 귀책사유가 직원의 과실로 인정되는 경우에는 변상여부 및 변상금액 판정시까지 가지급금 처리한다.
 3. 보상금지급은 민원인명의계좌에 대체 처리를 원칙으로한다.`,
     };
+
+    const dummyData = [
+        {
+            id: 0,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 1,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 2,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 3,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 4,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 5,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 6,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 7,
+            title: '1756, 경기광주금융센터',
+        },
+        {
+            id: 8,
+            title: '1756, 경기광주금융센터',
+        },
+    ];
 
     return (
         <BackView>
@@ -170,7 +202,7 @@ const NoticeModal = () => {
                                 </tr>
                                 <tr>
                                     <td colSpan={2} style={{ padding: 0 }}>
-                                        <LabelWrap></LabelWrap>
+                                        <LabelWrap>{dummyData.map((item) => item.id < 1 && <CenterLabel key={item.id} title={item.title} />)}</LabelWrap>
                                     </td>
                                 </tr>
                                 <tr>
@@ -185,7 +217,11 @@ const NoticeModal = () => {
                                 </tr>
                                 <tr>
                                     <td colSpan={2} style={{ padding: 0 }}>
-                                        <LabelWrap></LabelWrap>
+                                        <LabelWrap>
+                                            {dummyData.map((item) => (
+                                                <CenterLabel key={item.id} title={item.title} />
+                                            ))}
+                                        </LabelWrap>
                                     </td>
                                 </tr>
                                 <tr>
@@ -202,6 +238,7 @@ const NoticeModal = () => {
                         </Table>
                     </BottomTableWrap>
                 </TableWrap>
+                <BottomWrap></BottomWrap>
             </Container>
         </BackView>
     );

@@ -4,11 +4,14 @@ import { styled } from 'styled-components';
 import { ReactComponent as CloseButton } from '../../assets/icons/closeBlueBtn.svg';
 
 const Container = styled.div`
-    padding: 4px 11px 5px 10px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    padding-left: 8px;
     width: 184px;
     height: 30px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    /* justify-content: space-between; */
     border-radius: 8px;
     border: solid 1px rgba(153, 153, 153, 0.2);
     background-color: #fff;
@@ -25,7 +28,10 @@ const Title = styled.p`
     color: #333;
 `;
 
-const CancelBtn = styled.button``;
+const CancelBtn = styled.button`
+    display: flex;
+    align-items: center;
+`;
 
 const CenterLabel = (props) => {
     return (
