@@ -22,6 +22,7 @@ const GoodTab1 = () => {
     const [keywordToggle, setKeywordToggle] = useState(false);
     const [goodToggle, setGoodToggle] = useState(false);
     const [selectGraph, setSelectGraph] = useState('Good Score');
+    const [openSlideSheet, setOpenSlideSheet] = useState(null);
 
     const dummyData = [
         {
@@ -95,7 +96,7 @@ const GoodTab1 = () => {
         <>
             <Container>
                 <IndexBar experience />
-                <TabBar />
+                <TabBar openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
                 <Wrapper>
                     <BoardTitleWrap>
                         <FlexWrap>
@@ -163,9 +164,9 @@ const GoodTab1 = () => {
                         </NoticeWrap>
                     </FlexWrap>
                 </Wrapper>
-                <BackView>
-                    <TopSlideSheet />
-                </BackView>
+                {/* <BackView openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet}> */}
+                <TopSlideSheet openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
+                {/* </BackView> */}
             </Container>
         </>
     );

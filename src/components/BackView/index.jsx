@@ -11,7 +11,10 @@ const Container = styled.div`
 `;
 
 const BackView = (props) => {
-    return <Container>{props.children}</Container>;
+    if (!props.openSlideSheet) {
+        return null;
+    }
+    return props.openSlideSheet && <Container>{props.children}</Container>;
 };
 
 export default BackView;

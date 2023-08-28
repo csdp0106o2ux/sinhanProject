@@ -44,14 +44,14 @@ const IconText = styled.span`
     color: ${(props) => props.theme.white};
 `;
 
-const TabBar = () => {
+const TabBar = (props) => {
     return (
         <Container>
             <IconWrap>
                 <BagOnIcon />
                 <IconText slimFont>My Job</IconText>
             </IconWrap>
-            <IconWrap>
+            <IconWrap onClick={() => props.setOpenSlideSheet(!props.openSlideSheet)}>
                 <PaperOnIcon />
                 <IconText>나의정보</IconText>
             </IconWrap>
