@@ -2,6 +2,8 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 import { ReactComponent as CloseButton } from '../../assets/icons/closeModalBtn.svg';
+import Table from '../Table';
+import DropDown from '../dropDown/DropDown';
 
 const BackView = styled.div`
     padding: 108px 60px 40px 140px;
@@ -46,6 +48,15 @@ const HeaderTitle = styled.p`
 
 const IconButton = styled.button``;
 
+const ContnetsWrap = styled.div`
+    width: 1680px;
+    height: 364px;
+    display: flex;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #1f1f1f;
+`;
+
 const NoticeModal = () => {
     return (
         <BackView>
@@ -56,6 +67,104 @@ const NoticeModal = () => {
                         <CloseButton />
                     </IconButton>
                 </Header>
+                <Table redDot title={'통지정보'}>
+                    <caption>통지유형</caption>
+                    <colgroup>
+                        <col width="140px" />
+                        <col width="" />
+                        <col width="140px" />
+                        <col width="" />
+                    </colgroup>
+
+                    <tbody>
+                        <tr>
+                            <th>통지유형</th>
+                            <td></td>
+                            <th>보고기한</th>
+                            <td>
+                                <DropDown width={140} title={'2021.11.17'} calender />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>통지의견</th>
+                            <td colSpan={3}>
+                                <br />
+                                <br />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>유의사항</th>
+                            <td colSpan={3}>
+                                <br />
+                                <br />
+                                <br />
+                            </td>
+                        </tr>
+                    </tbody>
+                </Table>
+                <Table>
+                    <caption>통지유형</caption>
+                    <colgroup>
+                        <col width="86px" />
+                        <col width="86px" />
+                        <col width="125px" />
+                        <col width="" />
+                        <col width="131px" />
+                        <col width="131px" />
+                        <col width="131px" />
+                        <col width="131px" />
+                        <col width="131px" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </Table>
             </Container>
         </BackView>
     );
