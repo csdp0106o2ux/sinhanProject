@@ -6,6 +6,7 @@ import GoodTab2 from './pages/goodTab2';
 import GoodTab3 from './pages/goodTab3';
 import { Fragment } from 'react';
 import SideBar from './layout/SideBar';
+import VOCSearch from './pages/vocSearch';
 
 function App() {
     const location = useLocation();
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/goodTab1" element={<GoodTab1 />} />
                     <Route path="/goodTab2" element={<GoodTab2 />} />
                     <Route path="/goodTab3" element={<GoodTab3 />} />
+                    <Route path="/vocSearch" element={<VOCSearch />} />
                 </Routes>
             </div>
         </Fragment>

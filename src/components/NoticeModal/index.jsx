@@ -9,6 +9,7 @@ import TextArea from '../TextArea';
 import TextInput from '../textInput/TextInput';
 import DefaultButton from '../DefaultButton';
 import CenterLabel from './CenterLabel';
+import BlueBtn from '../BlueBtn';
 
 const BackView = styled.div`
     padding: 108px 60px 40px 140px;
@@ -63,7 +64,7 @@ const BottomTableWrap = styled.div`
 
 const InputWrapper = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 `;
 
 const LabelWrap = styled.div`
@@ -77,9 +78,11 @@ const LabelWrap = styled.div`
 `;
 
 const BottomWrap = styled.div`
+    padding: 0 34px 10px 0;
     width: 1720px;
     height: 64px;
     display: flex;
+    justify-content: flex-end;
     border-radius: 8px;
     box-shadow: 0 -6px 6px 0 rgba(0, 66, 136, 0.03);
     background-color: #fdfdfd;
@@ -238,7 +241,9 @@ const NoticeModal = () => {
                         </Table>
                     </BottomTableWrap>
                 </TableWrap>
-                <BottomWrap></BottomWrap>
+                <BottomWrap>
+                    <BlueBtn title={'등록'} />
+                </BottomWrap>
             </Container>
         </BackView>
     );
