@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-import { ReactComponent as Calender } from '../../assets/icons/dropDownCalender.svg';
+import Calender from '../../assets/images/calender.png';
 
 const Wrap = styled.div`
     position: relative;
@@ -10,11 +10,11 @@ const Wrap = styled.div`
 const Input = styled.input`
     appearance: none;
     padding: 4px 0 5px 10px;
-    width: 140px;
+    width: ${(props) => (props.width ? `${props.width}` : '140px')};
     height: 30px;
     border-radius: 8px;
     border: solid 1px rgba(153, 153, 153, 0.2);
-    background-color: #fff;
+    background-color: ${(props) => (props.disabled ? props.theme.whiteSmoke : props.theme.white)};
     font-family: NanumSquareOTFR;
     font-size: 14px;
     font-weight: normal;
@@ -25,10 +25,21 @@ const Input = styled.input`
     color: #333;
 `;
 
-const DateInput = () => {
+const IconWrap = styled.div`
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0.6px;
+    right: 0.2px;
+    background: url(${Calender}) no-repeat 100% 50%;
+    z-index: 2;
+`;
+
+const DateInput = (props) => {
     return (
         <Wrap>
-            <Input type="date" id="date" max="2077-06-20" min="2021-11-17" value="2021-11-17" />
+            <Input disabled={props.disabled} width={props.width} type="date" id="date" max="2077-06-20" min="2021-11-17" value="2021-11-17" />
+            {props.disabled && <IconWrap />}
         </Wrap>
     );
 };

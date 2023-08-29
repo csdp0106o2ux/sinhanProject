@@ -32,6 +32,7 @@ const theme = {
     pacificBlue: '#0086D9',
     freeSpeechBlue: '#3D4CBA',
     pattensBlue: '#D5E9F7',
+    solitude: '#EFF1F5',
 };
 
 export default theme;

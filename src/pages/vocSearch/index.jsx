@@ -1,7 +1,6 @@
-import React from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useState } from 'react';
 
-import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText } from './components/style';
+import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText } from './components/style';
 import { BlueBtn, DropDown, Header, TabBar } from '../../components';
 import Table from '../../components/Table';
 import TextInput from '../../components/textInput/TextInput';
@@ -13,8 +12,11 @@ import Checkbox from '../../components/CheckBox';
 import TextArea from '../../components/TextArea';
 import DateInput from '../../components/DateInput';
 import Radio from '../../components/Radio';
+import SearchLabel from './components/SearchLabel';
 
 const VOCSearch = () => {
+    const [label, setLabel] = useState([]);
+    const [selectLabel, setSelectLabel] = useState();
     const introEx = {
         0: `1. 귀 은행의 일익번창하심을 기원합니다.
 2. 귀 은행에 불만사항을 제기하오니 검토하신 후 처리하여 주시기 바랍니다.
@@ -27,6 +29,63 @@ const VOCSearch = () => {
         계사년 새해를 맞아 2013년형 마이너스 통장을 발급해드립니다. “ 라는 내용입니다.
         ...`,
     };
+
+    const labelDummy = [
+        {
+            id: 0,
+            title: '처리이력',
+            checked: false,
+        },
+        {
+            id: 1,
+            title: '알람이력',
+            checked: false,
+        },
+        {
+            id: 2,
+            title: '평가',
+            checked: false,
+        },
+        {
+            id: 3,
+            title: '사후처리',
+            checked: false,
+        },
+        {
+            id: 4,
+            title: '보상',
+            checked: false,
+        },
+        {
+            id: 5,
+            title: '문서수발신',
+            checked: false,
+        },
+        {
+            id: 6,
+            title: '접속이력',
+            checked: false,
+        },
+        {
+            id: 7,
+            title: '고객안내체크',
+            checked: true,
+        },
+        {
+            id: 8,
+            title: '상품정보',
+            checked: false,
+        },
+        {
+            id: 9,
+            title: '회신문',
+            checked: false,
+        },
+    ];
+
+    useEffect(() => {
+        setLabel(labelDummy);
+    }, []);
 
     return (
         <Container>
@@ -437,23 +496,173 @@ const VOCSearch = () => {
                             </tr>
                             <tr>
                                 <th>분쟁대상금액</th>
-                                <td></td>
+                                <td>
+                                    <FlexWrap>
+                                        <TextInput width={290} marginRight={10} />
+                                        <UnitText>원</UnitText>
+                                    </FlexWrap>
+                                </td>
                                 <th>분쟁확정금액</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <FlexWrap>
+                                        <TextInput width={290} marginRight={10} />
+                                        <UnitText>원</UnitText>
+                                    </FlexWrap>
+                                </td>
                             </tr>
                             <tr>
                                 <th>가입금액</th>
-                                <td></td>
+                                <td>
+                                    <FlexWrap>
+                                        <TextInput width={290} marginRight={10} />
+                                        <UnitText>원</UnitText>
+                                    </FlexWrap>
+                                </td>
                                 <th>상품가입일</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <DateInput />
+                                </td>
                             </tr>
                             <tr>
                                 <th>첨부파일</th>
-                                <td colSpan={5}></td>
+                                <td colSpan={5}>
+                                    <CheckBoxWrap>
+                                        <TextInput width={1451} marginRight={10} />
+                                        <DefaultButton title={'찾아보기'} />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                         </tbody>
                     </Table>
                 </TableWrap>
+                <SearchWrap>
+                    <Title>이력조회</Title>
+                    <LabelWrap>
+                        {label.map((item) => (
+                            <SearchLabel
+                                key={item.id}
+                                title={item.title}
+                                checked={item.checked}
+                                onClick={() =>
+                                    setLabel(
+                                        label.map((list) => {
+                                            if (item.id === list.id) {
+                                                setSelectLabel(list.title);
+                                                return {
+                                                    ...list,
+                                                    checked: true,
+                                                };
+                                            }
+                                            return {
+                                                ...list,
+                                                checked: false,
+                                            };
+                                        })
+                                    )
+                                }
+                            />
+                        ))}
+                    </LabelWrap>
+                    <DataWrap>
+                        <Table>
+                            <caption>이력조회</caption>
+                            <colgroup>
+                                <col width="336px" />
+                                <col width="336px" />
+                                <col width="336px" />
+                                <col width="336px" />
+                                <col width="336px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>단계</th>
+                                    <th>실시여부</th>
+                                    <th>일시</th>
+                                    <th>방법</th>
+                                    <th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <StepText>처리기한 연장</StepText>
+                                    </td>
+                                    <td>
+                                        <Checkbox id={'play01'} name={'play'} />
+                                    </td>
+                                    <td>
+                                        <DateInput width={'100%'} />
+                                    </td>
+                                    <td>
+                                        <DropDown>
+                                            <option>선택</option>
+                                            <option>전화</option>
+                                            <option>SMS</option>
+                                        </DropDown>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <StepText>사실관계 확인(민원 처리 중)</StepText>
+                                    </td>
+                                    <td>
+                                        <Checkbox id={'play02'} name={'play'} />
+                                    </td>
+                                    <td>
+                                        <DateInput width={'100%'} />
+                                    </td>
+                                    <td>
+                                        <DropDown>
+                                            <option>선택</option>
+                                            <option>전화</option>
+                                            <option>SMS</option>
+                                        </DropDown>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <StepText>처리기한 연장</StepText>
+                                    </td>
+                                    <td>
+                                        <Checkbox id={'play03'} name={'play'} />
+                                    </td>
+                                    <td>
+                                        <DateInput disabled width={'100%'} />
+                                    </td>
+                                    <td>
+                                        <DropDown disabled>
+                                            <option>선택</option>
+                                            <option>전화</option>
+                                            <option>SMS</option>
+                                        </DropDown>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <StepText>민원종결(회신)</StepText>
+                                    </td>
+                                    <td>
+                                        <Checkbox id={'play04'} name={'play'} />
+                                    </td>
+                                    <td>
+                                        <DateInput width={'100%'} />
+                                    </td>
+                                    <td>
+                                        <DropDown>
+                                            <option>선택</option>
+                                            <option>전화</option>
+                                            <option>SMS</option>
+                                        </DropDown>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </DataWrap>
+                </SearchWrap>
             </Wrapper>
             <BottomTabWrap>
                 <SpaceWrap>
