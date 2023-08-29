@@ -2,15 +2,17 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.button`
-    height: 30px;
+    margin-right: ${(props) => props.marginRight && `${props.marginRight}px`};
     padding: 6px 20px;
+    width: ${(props) => props.width && `${props.width}px`};
+    height: ${(props) => (props.height ? `${props.height}px` : '30px')};
     border-radius: 8px;
     background-color: #1b3b54;
 `;
 
 const Title = styled.p`
     font-family: NanumSquareOTFB;
-    font-size: 14px;
+    font-size: ${(props) => (props.save ? '16px' : '14px')};
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -22,8 +24,8 @@ const Title = styled.p`
 
 const DefaultButton = (props) => {
     return (
-        <Container>
-            <Title>{props.title}</Title>
+        <Container width={props.width} height={props.height} marginRight={props.marginRight}>
+            <Title save={props.save}>{props.title}</Title>
         </Container>
     );
 };

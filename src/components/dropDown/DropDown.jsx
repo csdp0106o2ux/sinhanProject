@@ -10,7 +10,7 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const Label = styled.span`
+const Label = styled.label`
     margin-bottom: 6px;
     font-family: NanumSquareOTFB;
     font-size: 12px;
@@ -22,7 +22,7 @@ const Label = styled.span`
     color: #333;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.select`
     margin-right: ${(props) => (props.margin ? '4px' : '0px')};
     padding: 6px 0 6px 10px;
     width: ${(props) => props.width}px;
@@ -33,9 +33,6 @@ const Wrapper = styled.div`
     border: solid 1px rgba(52, 149, 223, 0.2);
     border-radius: 8px;
     background-color: ${(props) => props.theme.white};
-`;
-
-const Title = styled.span`
     font-family: NanumSquareOTFB;
     font-size: 12px;
     font-weight: normal;
@@ -51,7 +48,7 @@ const DropDown = (props) => {
         <Container marginRight={props.marginRight}>
             {props.label && <Label>{props.label}</Label>}
             <Wrapper width={props.width} margin={props.margin}>
-                <Title>{props.title}</Title>
+                {props.children}
                 {props.calender ? <Calender /> : <UnderArrow />}
             </Wrapper>
         </Container>
