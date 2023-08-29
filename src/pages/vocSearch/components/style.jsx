@@ -128,11 +128,22 @@ const LabelWrap = styled.div`
 
 const DataWrap = styled.div`
     margin-bottom: 40px;
-    padding: 20px 20px 301px;
+    padding: 20px 20px 0;
     height: 597px;
     border-radius: 8px;
     box-shadow: 0 -1px 0 0 #ededed;
     background-color: #fdfdfd;
 `;
 
-export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap };
+const StepText = styled.p`
+    font-family: NanumSquareOTFR;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #555;
+`;
+
+export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText };

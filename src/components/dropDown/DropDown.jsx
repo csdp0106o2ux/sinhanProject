@@ -32,7 +32,7 @@ const Wrapper = styled.select`
     align-items: center;
     border: solid 1px rgba(52, 149, 223, 0.2);
     border-radius: 8px;
-    background-color: ${(props) => props.theme.white};
+    background-color: ${(props) => (props.disabled ? props.theme.whiteSmoke : props.theme.white)};
     font-family: NanumSquareOTFB;
     font-size: 12px;
     font-weight: normal;
@@ -47,7 +47,7 @@ const DropDown = (props) => {
     return (
         <Container marginRight={props.marginRight}>
             {props.label && <Label>{props.label}</Label>}
-            <Wrapper width={props.width} margin={props.margin}>
+            <Wrapper disabled={props.disabled} width={props.width} margin={props.margin}>
                 {props.children}
                 {props.calender ? <Calender /> : <UnderArrow />}
             </Wrapper>
