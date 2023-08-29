@@ -20,18 +20,18 @@ const Label = styled.span`
 `;
 
 const Input = styled.input`
-    width: 240px;
-    height: 30px;
+    width: ${(props) => (props.width ? `${props.width}px` : '240px')};
+    height: ${(props) => (props.height ? `${props.height}px` : '30px')};
     border-radius: 8px;
-    border: solid 1px rgba(52, 149, 223, 0.2);
-    background-color: ${(props) => props.theme.white};
+    border: solid 1px ${(props) => (props.gray ? 'rgba(153, 153, 153, 0.2)' : 'rgba(52, 149, 223, 0.2)')};
+    background-color: ${(props) => (props.disabled ? props.theme.whiteSmoke : props.theme.white)};
 `;
 
 const TextInput = (props) => {
     return (
         <Container marginRight={props.marginRight}>
             <Label>{props.label}</Label>
-            <Input placeholder={props.placeholder} value={props.value} onChange={props.onChange} />
+            <Input type="text" placeholder={props.placeholder} value={props.value} onChange={props.onChange} disabled={props.disabled} width={props.width} height={props.height} gray={props.gray} />
         </Container>
     );
 };

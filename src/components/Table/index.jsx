@@ -59,6 +59,7 @@ const TableMain = styled.table`
         vertical-align: middle;
         font-weight: 400;
         word-break: keep-all;
+        background-color: white;
     }
     tr:first-child th,
     tr:first-child td {
