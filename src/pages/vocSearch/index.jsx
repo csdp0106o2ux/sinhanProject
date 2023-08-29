@@ -12,6 +12,7 @@ import SearchButton from '../../components/NoticeModal/SearchButton';
 import Checkbox from '../../components/CheckBox';
 import TextArea from '../../components/TextArea';
 import DateInput from '../../components/DateInput';
+import Radio from '../../components/Radio';
 
 const VOCSearch = () => {
     const introEx = {
@@ -19,6 +20,12 @@ const VOCSearch = () => {
 2. 귀 은행에 불만사항을 제기하오니 검토하신 후 처리하여 주시기 바랍니다.
 3. 본인은 영세한 개인사업자로서 보험사고차량에 정비용품을 공급하고 그 대금을 보험사로부터 받을 시 신한은행 계좌로 입금토록 약정하였습니다.
 4. 보험사와 장기미결금 문제와 관련하여 다소 분쟁이 있어 반증자료용으로 보험사별 입금내역자료를 2013년부터 2018년까지 발급을 요청하였습니다.`,
+        1: `오늘 좀전에 신한은행이라고 하면서 한통의 문자를 받았습니다. 
+        내용인즉,
+        
+        “안녕하세요? 신한은행입니다.
+        계사년 새해를 맞아 2013년형 마이너스 통장을 발급해드립니다. “ 라는 내용입니다.
+        ...`,
     };
 
     return (
@@ -207,7 +214,17 @@ const VOCSearch = () => {
                             </tr>
                             <tr>
                                 <th>관련 민원/VOC</th>
-                                <td colSpan={5}></td>
+                                <td colSpan={5}>
+                                    <CheckBoxWrap>
+                                        <DropDown width={282} marginRight={10}>
+                                            <option>관련민원 선택</option>
+                                            <option>관련민원 선택</option>
+                                        </DropDown>
+                                        <TextInput width={574} marginRight={10} />
+                                        <TextInput width={574} marginRight={10} />
+                                        <DefaultButton width={80} title="조회" />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                         </tbody>
                     </Table>
@@ -222,11 +239,20 @@ const VOCSearch = () => {
                         <tbody>
                             <tr>
                                 <th>접수의견</th>
-                                <td></td>
+                                <td>
+                                    <TextArea disabled width={1540} height={134}>
+                                        {'불만'}
+                                    </TextArea>
+                                </td>
                             </tr>
                             <tr>
                                 <th>첨부파일</th>
-                                <td></td>
+                                <td>
+                                    <CheckBoxWrap>
+                                        <TextInput width={1439} marginRight={10} />
+                                        <DefaultButton width={91} title="찾아보기" />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                         </tbody>
                     </Table>
@@ -248,14 +274,14 @@ const VOCSearch = () => {
                         <thead>
                             <tr>
                                 <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
-                                <th>상태</th>
+                                <th>구분</th>
+                                <th>구분COD</th>
+                                <th>통지의견</th>
+                                <th>통지부점</th>
+                                <th>통지일시</th>
+                                <th>보고기한</th>
+                                <th>처리일시</th>
+                                <th>부서의견서</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -310,45 +336,104 @@ const VOCSearch = () => {
                         <tbody>
                             <tr>
                                 <th>발생원인</th>
-                                <td></td>
+                                <td>
+                                    <CheckBoxWrap>
+                                        <DropDown width={335} marginRight={10}>
+                                            <option> 선택</option>
+                                            <option>선택</option>
+                                        </DropDown>
+                                        <DropDown width={335}>
+                                            <option> 선택</option>
+                                            <option>선택</option>
+                                        </DropDown>
+                                    </CheckBoxWrap>
+                                </td>
                                 <th>현장방문여부</th>
-                                <td></td>
+                                <td>
+                                    <Checkbox />
+                                </td>
                                 <th>고객취하여부</th>
-                                <td></td>
+                                <td>
+                                    <Checkbox />
+                                </td>
                             </tr>
                             <tr>
                                 <th>처리방법</th>
-                                <td></td>
+                                <td>
+                                    <DropDown width={335}>
+                                        <option> 선택</option>
+                                        <option>선택</option>
+                                    </DropDown>
+                                </td>
                                 <th>고객의 소리</th>
-                                <td></td>
+                                <td>
+                                    <Checkbox />
+                                </td>
                                 <th>처리결과</th>
-                                <td></td>
+                                <td>
+                                    <DropDown width={250}>
+                                        <option> 선택</option>
+                                        <option>선택</option>
+                                    </DropDown>
+                                </td>
                             </tr>
                             <tr>
                                 <th>처리자</th>
-                                <td colSpan={5}></td>
+                                <td colSpan={5}>
+                                    <CheckBoxWrap>
+                                        <TextInput disabled width={282} marginRight={10} value={'8888000070'} />
+                                        <TextInput disabled width={282} marginRight={10} value={'소비자지원부'} />
+                                        <TextInput disabled width={282} marginRight={10} value={'홍길동'} />
+                                        <DefaultButton title="직원검색" />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                             <tr>
                                 <th>처리내용</th>
-                                <td colSpan={5}></td>
+                                <td colSpan={5}>
+                                    <TextArea width={1540} height={134}>
+                                        {introEx[1]}
+                                    </TextArea>
+                                </td>
                             </tr>
                             <tr>
                                 <th>공시제외 대상</th>
-                                <td></td>
+                                <td>
+                                    <CheckBoxWrap>
+                                        <Radio id={'except1'} label={'대상'} name={'except'} checked />
+                                        <Radio id={'except2'} label={'제외'} name={'except'} />
+                                    </CheckBoxWrap>
+                                </td>
                                 <th>민원유발 개수</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <DropDown width={290}>
+                                        <option> 선택</option>
+                                        <option>선택</option>
+                                    </DropDown>
+                                </td>
                             </tr>
                             <tr>
                                 <th>금감원회신일</th>
-                                <td></td>
+                                <td>
+                                    <DateInput />
+                                </td>
                                 <th>고객회신일</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <DateInput />
+                                </td>
                             </tr>
                             <tr>
                                 <th>상품 판매자</th>
-                                <td></td>
+                                <td>
+                                    <TextInput width={120} />
+                                </td>
                                 <th>세부유형</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <DropDown width={290}>
+                                        <option> 선택</option>
+                                        <option>선택</option>
+                                    </DropDown>
+                                </td>
                             </tr>
                             <tr>
                                 <th>분쟁대상금액</th>

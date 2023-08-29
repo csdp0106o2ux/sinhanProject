@@ -50,7 +50,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .scrollbar::-webkit-scrollbar-track {
-        background: white;
+        /* background: white; */
         /*스크롤바 뒷 배경 색상*/
     }
     input[type="date"]::-webkit-calendar-picker-indicator,

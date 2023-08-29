@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 const Container = styled.textarea`
     padding: 4px 14px 4px 10px;
-    width: 100%;
+    width: ${(props) => (props.width ? `${props.width}px` : '100%')};
     height: ${(props) => props.height && `${props.height}px`};
     font-family: NanumSquareOTFR;
     font-size: 14px;
@@ -15,13 +15,13 @@ const Container = styled.textarea`
     color: #333;
     border-radius: 8px;
     border: solid 1px rgba(153, 153, 153, 0.2);
-    background-color: #fff;
+    background-color: ${(props) => (props.disabled ? '#f5f5f5' : '#fff')};
     resize: none;
 `;
 
 const TextArea = (props) => {
     return (
-        <Container className="scrollbar" height={props.height}>
+        <Container className="scrollbar" width={props.width} height={props.height} disabled={props.disabled}>
             {props.children}
         </Container>
     );

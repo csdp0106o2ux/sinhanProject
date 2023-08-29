@@ -44,7 +44,7 @@ const Checkbox = (props) => {
     return (
         <Wrap>
             <CheckInput type="checkbox" name={props.name} id={props.id}></CheckInput>
-            <Label htmlFor={props.id}>asdasd</Label>
+            <Label htmlFor={props.id}>{props.label}</Label>
         </Wrap>
     );
 };
