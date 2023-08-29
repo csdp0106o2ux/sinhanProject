@@ -93,4 +93,46 @@ const LabelText = styled.label`
     color: #333;
 `;
 
-export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText };
+const UnitText = styled.p`
+    font-family: NanumSquareOTFB;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #333;
+`;
+
+const Title = styled.p`
+    margin-bottom: 10px;
+    font-family: NanumSquareOTFEB;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #1f1f1f;
+`;
+
+const SearchWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const LabelWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const DataWrap = styled.div`
+    margin-bottom: 40px;
+    padding: 20px 20px 301px;
+    height: 597px;
+    border-radius: 8px;
+    box-shadow: 0 -1px 0 0 #ededed;
+    background-color: #fdfdfd;
+`;
+
+export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap };
