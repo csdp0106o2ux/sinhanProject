@@ -1,13 +1,15 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper } from './components/style';
-import { Header, TabBar } from '../../components';
+import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap } from './components/style';
+import { BlueBtn, Header, TabBar } from '../../components';
 import Table from '../../components/Table';
 import TextInput from '../../components/textInput/TextInput';
 import DefaultButton from '../../components/DefaultButton';
 import { ReactComponent as CheckTrue } from '../../assets/icons/checkBoxTrue.svg';
 import { ReactComponent as CheckFalse } from '../../assets/icons/checkBoxFalse.svg';
+import SearchButton from '../../components/NoticeModal/SearchButton';
+import Checkbox from '../../components/CheckBox';
 
 const VOCSearch = () => {
     const introEx = {
@@ -221,6 +223,7 @@ const VOCSearch = () => {
                         </tbody>
                     </Table>
                 </TableWrap>
+                <Checkbox />
                 <TableWrap>
                     <Table title="처리정보">
                         <caption>처리정보</caption>
@@ -296,6 +299,29 @@ const VOCSearch = () => {
                     </Table>
                 </TableWrap>
             </Wrapper>
+            <BottomTabWrap>
+                <SpaceWrap>
+                    <BtnWrap width={190} notification>
+                        <BtnText>민원/VOC 이력 2건</BtnText>
+                    </BtnWrap>
+                    <BtnWrap width={238}>
+                        <BtnText>이관/반려/처리기한 연장 요청</BtnText>
+                    </BtnWrap>
+                    <BtnWrap>
+                        <BtnText>제도개선 등록</BtnText>
+                    </BtnWrap>
+                    <BtnWrap marginRight>
+                        <BtnText>접수내용</BtnText>
+                    </BtnWrap>
+                </SpaceWrap>
+                <SpaceWrap>
+                    <BtnWrap width={128}>
+                        <BtnText gray>삭제</BtnText>
+                    </BtnWrap>
+                    <DefaultButton save width={128} height={44} title={'저장'} />
+                    <BlueBtn marginLeft={20} title={'결제'} />
+                </SpaceWrap>
+            </BottomTabWrap>
         </Container>
     );
 };
