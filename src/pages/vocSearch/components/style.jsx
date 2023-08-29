@@ -81,4 +81,16 @@ const SpaceWrap = styled.div`
     display: flex;
 `;
 
-export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap };
+const LabelText = styled.label`
+    margin-right: ${(props) => props.marginRight && `${props.marginRight}px`};
+    font-family: NanumSquareOTFB;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #333;
+`;
+
+export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText };

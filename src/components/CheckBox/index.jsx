@@ -1,10 +1,12 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import CheckOn from '../../assets/images/checkBoxOn.png';
+import CheckOff from '../../assets/images/checkBoxOff.png';
 
 const Wrap = styled.div``;
 
 const Label = styled.label`
-    font-style: normal !important;
+    /* font-style: normal !important;
     font-variant-ligatures: normal !important;
     font-variant-caps: normal !important;
     line-height: 0 !important;
@@ -21,16 +23,16 @@ const Label = styled.label`
     overflow: hidden;
     white-space: nowrap;
     display: inline-block;
-    position: absolute;
+    position: absolute; */
 `;
 
 const CheckInput = styled.input`
     appearance: none;
-    width: 16px;
-    height: 16px;
-    background: red;
+    width: 24px;
+    height: 24px;
+    background: url(${CheckOff}) no-repeat 100% 100% / cover;
     &:checked {
-        background: blue;
+        background: url(${CheckOn}) no-repeat 100% 100% / cover;
         & + ${Label} {
             color: red;
             font-weight: 700;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap } from './components/style';
-import { BlueBtn, Header, TabBar } from '../../components';
+import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText } from './components/style';
+import { BlueBtn, DropDown, Header, TabBar } from '../../components';
 import Table from '../../components/Table';
 import TextInput from '../../components/textInput/TextInput';
 import DefaultButton from '../../components/DefaultButton';
@@ -10,13 +10,13 @@ import { ReactComponent as CheckTrue } from '../../assets/icons/checkBoxTrue.svg
 import { ReactComponent as CheckFalse } from '../../assets/icons/checkBoxFalse.svg';
 import SearchButton from '../../components/NoticeModal/SearchButton';
 import Checkbox from '../../components/CheckBox';
+import TextArea from '../../components/TextArea';
+import DateInput from '../../components/DateInput';
 
 const VOCSearch = () => {
     const introEx = {
-        1: `1. 귀 은행의 일익번창하심을 기원합니다.
+        0: `1. 귀 은행의 일익번창하심을 기원합니다.
 2. 귀 은행에 불만사항을 제기하오니 검토하신 후 처리하여 주시기 바랍니다.
-
-
 3. 본인은 영세한 개인사업자로서 보험사고차량에 정비용품을 공급하고 그 대금을 보험사로부터 받을 시 신한은행 계좌로 입금토록 약정하였습니다.
 4. 보험사와 장기미결금 문제와 관련하여 다소 분쟁이 있어 반증자료용으로 보험사별 입금내역자료를 2013년부터 2018년까지 발급을 요청하였습니다.`,
     };
@@ -50,6 +50,7 @@ const VOCSearch = () => {
                                 </td>
                                 <th>신청인명</th>
                                 <td>
+                                    <Checkbox />
                                     <CheckBoxWrap>
                                         <TextInput width={120} gray marginRight={20} />
                                         <CheckBox>
@@ -79,13 +80,14 @@ const VOCSearch = () => {
                             <tr>
                                 <th>제목</th>
                                 <td>
-                                    <TextInput width={1540} gray value={'유동성 거래내역조회 발급에 대한 수수료 징수'} />
+                                    {/* <TextArea height={30} gray value={} /> */}
+                                    <TextArea height={30}>{'유동성 거래내역조회 발급에 대한 수수료 징수'}</TextArea>
                                 </td>
                             </tr>
                             <tr>
                                 <th>내용</th>
                                 <td>
-                                    <TextInput width={1540} height={92} gray value={introEx[1]} />
+                                    <TextArea height={92}>{introEx[0]}</TextArea>
                                 </td>
                             </tr>
                         </tbody>
@@ -105,33 +107,103 @@ const VOCSearch = () => {
                         <tbody>
                             <tr>
                                 <th>업무 구분</th>
-                                <td></td>
+                                <td>
+                                    <SpaceWrap>
+                                        <DropDown width={335} marginRight={10}>
+                                            <option>불만</option>
+                                            <option>불만</option>
+                                            <option>불만</option>
+                                        </DropDown>
+                                        <DropDown width={335}>
+                                            <option>VOC</option>
+                                            <option>VOC</option>
+                                            <option>VOC</option>
+                                        </DropDown>
+                                    </SpaceWrap>
+                                </td>
                                 <th>접수 채널</th>
-                                <td></td>
+                                <td>
+                                    <DropDown width={250}>
+                                        <option>불만</option>
+                                        <option>불만</option>
+                                        <option>불만</option>
+                                    </DropDown>
+                                </td>
                                 <th>회신방법</th>
-                                <td></td>
+                                <td>
+                                    <DropDown width={250}>
+                                        <option>불만</option>
+                                        <option>불만</option>
+                                        <option>불만</option>
+                                    </DropDown>
+                                </td>
                             </tr>
                             <tr>
                                 <th>관련계좌등록</th>
-                                <td></td>
+                                <td>
+                                    <SpaceWrap>
+                                        <DropDown width={140} marginRight={10}>
+                                            <option>직접입력</option>
+                                            <option>계좌입력</option>
+                                        </DropDown>
+                                        <DropDown width={140} marginRight={10}>
+                                            <option>본인</option>
+                                            <option>본인 외(가족)</option>
+                                        </DropDown>
+                                        <TextInput width={290} marginRight={10} />
+                                        <DefaultButton width={80} title="등록" />
+                                    </SpaceWrap>
+                                </td>
                                 <th>서비스</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <SpaceWrap>
+                                        <TextInput width={590} marginRight={10} disabled value="해당없음" />
+                                        <DefaultButton width={80} title="조회" />
+                                    </SpaceWrap>
+                                </td>
                             </tr>
                             <tr>
                                 <th>유형분류</th>
-                                <td colSpan={5}></td>
+                                <td colSpan={5}>
+                                    <CheckBoxWrap>
+                                        <DefaultButton width={80} marginRight={20} title="조회" />
+                                        <LabelText marginRight={10}>업무 분류표</LabelText>
+                                        <TextInput width={632} marginRight={20} value={'수신 > 실명제 > 계좌개설'} />
+                                        <LabelText marginRight={10}>감정 분류표</LabelText>
+                                        <TextInput disabled width={632} value={'부정 > 상담사 > 산만함'} />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                             <tr>
                                 <th>관련부서</th>
-                                <td></td>
+                                <td>
+                                    <CheckBoxWrap>
+                                        <TextInput width={450} marginRight={10} value={'개인고객부, 디지털마케팅부, 채널전략부'} />
+                                        <DefaultButton width={80} title="조회" />
+                                    </CheckBoxWrap>
+                                </td>
                                 <th>발생점</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <CheckBoxWrap>
+                                        <TextInput width={105} marginRight={10} value={'1766'} />
+                                        <TextInput width={220} marginRight={10} value={'경기광주금융센터'} />
+                                        <DefaultButton width={91} title="지점검색" />
+                                    </CheckBoxWrap>
+                                </td>
                             </tr>
                             <tr>
                                 <th>민원사전예고</th>
-                                <td></td>
+                                <td>
+                                    <CheckBoxWrap>
+                                        <TextInput width={220} marginRight={10} value={'1766'} />
+                                        <TextInput width={220} marginRight={10} value={'경기광주금융센터'} />
+                                        <DefaultButton width={80} title="조회" />
+                                    </CheckBoxWrap>
+                                </td>
                                 <th>완료예정일</th>
-                                <td colSpan={3}></td>
+                                <td colSpan={3}>
+                                    <DateInput />
+                                </td>
                             </tr>
                             <tr>
                                 <th>관련 민원/VOC</th>
@@ -223,7 +295,6 @@ const VOCSearch = () => {
                         </tbody>
                     </Table>
                 </TableWrap>
-                <Checkbox />
                 <TableWrap>
                     <Table title="처리정보">
                         <caption>처리정보</caption>

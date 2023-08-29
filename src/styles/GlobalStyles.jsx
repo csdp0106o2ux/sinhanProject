@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
+import DateIcon from '../assets/images/calender.png';
+
 const GlobalStyles = createGlobalStyle`
     ${reset}
     a{
@@ -50,6 +52,21 @@ const GlobalStyles = createGlobalStyle`
     .scrollbar::-webkit-scrollbar-track {
         background: white;
         /*스크롤바 뒷 배경 색상*/
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="date"]::-webkit-inner-spin-button {
+        display: none;
+        appearance: none;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: rgba(0, 0, 0, 0);
+        opacity: 1;
+        display: block;
+        background: url(${DateIcon}) no-repeat 100% 50%;
+        width: 30px;
+        height: 30px;
+        border-width: thin;
     }
 `;
 

@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 const Label = styled.span`
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
     font-family: NanumSquareOTFB;
     font-size: 12px;
     font-weight: normal;

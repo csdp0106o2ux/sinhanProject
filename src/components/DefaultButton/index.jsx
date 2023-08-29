@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const Container = styled.button`
+    margin-right: ${(props) => props.marginRight && `${props.marginRight}px`};
     padding: 6px 20px;
     width: ${(props) => props.width && `${props.width}px`};
     height: ${(props) => (props.height ? `${props.height}px` : '30px')};
@@ -23,7 +24,7 @@ const Title = styled.p`
 
 const DefaultButton = (props) => {
     return (
-        <Container width={props.width} height={props.height}>
+        <Container width={props.width} height={props.height} marginRight={props.marginRight}>
             <Title save={props.save}>{props.title}</Title>
         </Container>
     );

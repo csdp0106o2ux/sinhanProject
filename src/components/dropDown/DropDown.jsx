@@ -33,9 +33,6 @@ const Wrapper = styled.select`
     border: solid 1px rgba(52, 149, 223, 0.2);
     border-radius: 8px;
     background-color: ${(props) => props.theme.white};
-`;
-
-const Title = styled.span`
     font-family: NanumSquareOTFB;
     font-size: 12px;
     font-weight: normal;
@@ -51,7 +48,7 @@ const DropDown = (props) => {
         <Container marginRight={props.marginRight}>
             {props.label && <Label>{props.label}</Label>}
             <Wrapper width={props.width} margin={props.margin}>
-                <Title>{props.title}</Title>
+                {props.children}
                 {props.calender ? <Calender /> : <UnderArrow />}
             </Wrapper>
         </Container>
