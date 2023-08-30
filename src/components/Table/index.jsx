@@ -60,27 +60,29 @@ const TableMain = styled.table`
         font-weight: 400;
         word-break: keep-all;
         background-color: white;
+
+        &.center {
+            text-align: center;
+        }
     }
     tr:first-child th,
     tr:first-child td {
     }
     th {
-        text-align: center;
         background-color: #f8fafc;
         text-align: left;
-        ${(props) =>
-            props.redDot &&
-            `
+
+        &.redDot {
             &::after {
-            margin-left: 2px;
-            content: '';
-            width: 4px;
-            height: 4px;
-            background-color: #e21f0b;
-            border-radius: 20px;
-            position: absolute;
+                margin-left: 2px;
+                content: '';
+                width: 4px;
+                height: 4px;
+                background-color: #e21f0b;
+                border-radius: 20px;
+                position: absolute;
+            }
         }
-`}
     }
     thead {
         th {
@@ -99,7 +101,9 @@ const Table = (props) => {
         <>
             {props.title && <TableTitle>{props.title}</TableTitle>}
             <TableWrap>
-                <TableMain redDot={props.redDot}>{props.children}</TableMain>
+                <TableMain redDot={props.redDot} center={props.center}>
+                    {props.children}
+                </TableMain>
             </TableWrap>
         </>
     );

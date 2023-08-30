@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import BackView from '../../components/BackView';
 import TopSlideSheet from '../../layout/TopSlideSheet';
 import NoticeModal from '../../components/NoticeModal';
+import BottomSlideSheet from '../../layout/BottomSlideSheet';
 
 const GoodTab1 = () => {
     const navigate = useNavigate();
@@ -96,7 +97,7 @@ const GoodTab1 = () => {
     return (
         <>
             <Container>
-                <NoticeModal />
+                {/* <NoticeModal /> */}
                 <IndexBar experience />
                 <TabBar openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
                 <Wrapper>
@@ -168,6 +169,7 @@ const GoodTab1 = () => {
                 </Wrapper>
                 {/* <BackView openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet}> */}
                 <TopSlideSheet openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
+                <BottomSlideSheet />
                 {/* </BackView> */}
             </Container>
         </>
