@@ -90,7 +90,7 @@ const SideBarAccodion = (props) => {
 
     const handlerCollapse = useCallback(
         (event) => {
-            // event.stopPropagation();
+            event.stopPropagation();
             if (parentRef.current === null || childRef.current === null) {
                 return;
             }
