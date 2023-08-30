@@ -1,10 +1,36 @@
-import React from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { css, keyframes, styled } from 'styled-components';
 
 import Table from '../../components/Table';
 import CloseBtn from '../../assets/images/closeModalBtn.png';
 import Radio from '../../components/Radio';
 import { BlueBtn } from '../../components';
+
+const fadeIn = keyframes`
+        0% {
+            transform: translateY(400px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+`;
+
+const fadeOut = keyframes`
+        0% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(600px);
+        }
+`;
+
+const modalSettings = (openBottomSlide) => css`
+    animation: slide 1s ease;
+    visibility: ${openBottomSlide ? 'visible' : 'hidden'};
+    z-index: 15;
+    animation: ${openBottomSlide ? fadeIn : fadeOut} 0.7s ease;
+    transition: visibility 0.7s ease;
+`;
 
 const BackView = styled.div`
     /* padding: 108px 60px 40px 140px; */
@@ -22,13 +48,14 @@ const BackView = styled.div`
 
 const Container = styled.div`
     margin-left: 80px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 1840px;
-    height: 414px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     background-color: #fff;
+
+    ${(props) => modalSettings(props.openBottomSlide)}
 `;
 
 const Header = styled.div`
@@ -61,7 +88,6 @@ const IconButton = styled.button`
 
 const Wrapper = styled.div`
     padding: 20px 60px;
-    height: 100%;
 `;
 
 const TableText = styled.p`
@@ -78,20 +104,56 @@ const TableText = styled.p`
 const BottomWrap = styled.div`
     padding: 10px 60px 10px 0;
     width: 100%;
-    height: 64px;
     display: flex;
     justify-content: flex-end;
     box-shadow: 0 -6px 6px 0 rgba(0, 66, 136, 0.03);
     background-color: #fdfdfd;
 `;
 
-const BottomSlideSheet = () => {
+const BottomSlideSheet = ({ openBottomSlide, setOpenBottomSlide }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const showModal = (e) => {
+        document.body.style.overflow = 'hidden';
+    };
+
+    const hideModal = (e) => {
+        document.body.style.overflow = 'unset';
+    };
+
+    useEffect(() => {
+        let timeoutId;
+        if (openBottomSlide) {
+            setIsOpen(true);
+            showModal();
+        } else {
+            timeoutId = setTimeout(() => {
+                hideModal();
+                setIsOpen(false);
+            }, 400);
+        }
+
+        return () => {
+            if (timeoutId !== undefined) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [openBottomSlide]);
+
+    if (!isOpen) {
+        return null;
+    }
+
     return (
         <BackView>
-            <Container>
+            <Container openBottomSlide={openBottomSlide}>
                 <Header>
                     <HeaderTitle>민원/ VOC 이력</HeaderTitle>
-                    <IconButton />
+                    <IconButton
+                        onClick={() => {
+                            setOpenBottomSlide(!openBottomSlide);
+                        }}
+                    />
                 </Header>
                 <Wrapper>
                     <Table center>

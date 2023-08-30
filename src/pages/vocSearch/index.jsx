@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText } from './components/style';
+import { CheckBox, CheckBoxText, CheckBoxWrap, Container, FlexWrap, TableWrap, Wrapper, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText, TableBtnWrap, TableBtn } from './components/style';
 import { BlueBtn, DropDown, Header, TabBar } from '../../components';
 import Table from '../../components/Table';
 import TextInput from '../../components/textInput/TextInput';
@@ -15,10 +15,16 @@ import Radio from '../../components/Radio';
 import SearchLabel from './components/SearchLabel';
 import HistoryModal from '../../components/HistoryModal';
 import BottomSlideSheet from '../../layout/BottomSlideSheet';
+import NoticeModal from '../../components/NoticeModal';
+import CustomerTab from './components/CustomerTab';
 
 const VOCSearch = () => {
     const [label, setLabel] = useState([]);
     const [selectLabel, setSelectLabel] = useState();
+    const [openSlideSheet, setOpenSlideSheet] = useState(null);
+    const [openNoticeModal, setOpenNoticeModal] = useState(null);
+    const [openBottomSlide, setOpenBottomSlide] = useState(null);
+    const [openSearchModal, setOpenSearchModal] = useState(null);
     const introEx = {
         0: `1. 귀 은행의 일익번창하심을 기원합니다.
 2. 귀 은행에 불만사항을 제기하오니 검토하신 후 처리하여 주시기 바랍니다.
@@ -91,10 +97,43 @@ const VOCSearch = () => {
 
     return (
         <Container>
-            {/* <HistoryModal /> */}
+            <NoticeModal openNoticeModal={openNoticeModal} setOpenNoticeModal={setOpenNoticeModal} />
+            <HistoryModal openSearchModal={openSearchModal} setOpenSearchModal={setOpenSearchModal} />
             <Header />
             <TabBar />
+            <CustomerTab
+                onClick={() => {
+                    setOpenSearchModal(true);
+                }}
+            />
             <Wrapper>
+                <TableWrap>
+                    <Table notBorder title={'민원/ VOC 처리정보'}>
+                        <caption>민원/ VOC 처리정보</caption>
+                        <colgroup>
+                            <col width="140px" />
+                            <col width="290px" />
+                            <col width="140px" />
+                            <col width="290px" />
+                            <col width="140px" />
+                            <col width="290px" />
+                            <col width="140px" />
+                            <col width="290px" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th className="yellow">진행상태</th>
+                                <td className="yellow">조사: 통지</td>
+                                <th>ID</th>
+                                <td>V2021002124</td>
+                                <th>등록일시</th>
+                                <td>2021.11.15 16:57:57</td>
+                                <th>민원처리 담당자</th>
+                                <td className="gray">담당자 배정중</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </TableWrap>
                 <TableWrap>
                     <Table title={'신청인 정보'}>
                         <caption>신청인 정보</caption>
@@ -108,7 +147,7 @@ const VOCSearch = () => {
                             <tr>
                                 <th rowSpan={2}>주소</th>
                                 <td rowSpan={2}>
-                                    <FlexWrap>
+                                    <FlexWrap marginBottom={10}>
                                         <TextInput width={120} marginRight={10} gray disabled />
                                         <DefaultButton title={'우편번호 찾기'} />
                                     </FlexWrap>
@@ -119,7 +158,6 @@ const VOCSearch = () => {
                                 </td>
                                 <th>신청인명</th>
                                 <td>
-                                    <Checkbox />
                                     <CheckBoxWrap>
                                         <TextInput width={120} gray marginRight={20} />
                                         <CheckBox>
@@ -147,14 +185,13 @@ const VOCSearch = () => {
                         </colgroup>
                         <tbody>
                             <tr>
-                                <th>제목</th>
+                                <th className="redDot">제목</th>
                                 <td>
-                                    {/* <TextArea height={30} gray value={} /> */}
                                     <TextArea height={30}>{'유동성 거래내역조회 발급에 대한 수수료 징수'}</TextArea>
                                 </td>
                             </tr>
                             <tr>
-                                <th>내용</th>
+                                <th className="redDot">내용</th>
                                 <td>
                                     <TextArea height={92}>{introEx[0]}</TextArea>
                                 </td>
@@ -178,21 +215,21 @@ const VOCSearch = () => {
                                 <th>업무 구분</th>
                                 <td>
                                     <SpaceWrap>
-                                        <DropDown width={335} marginRight={10}>
+                                        <DropDown gray width={335} marginRight={10}>
                                             <option>불만</option>
                                             <option>불만</option>
                                             <option>불만</option>
                                         </DropDown>
-                                        <DropDown width={335}>
+                                        <DropDown gray width={335}>
                                             <option>VOC</option>
                                             <option>VOC</option>
                                             <option>VOC</option>
                                         </DropDown>
                                     </SpaceWrap>
                                 </td>
-                                <th>접수 채널</th>
+                                <th className="redDot">접수 채널</th>
                                 <td>
-                                    <DropDown width={250}>
+                                    <DropDown gray width={250}>
                                         <option>불만</option>
                                         <option>불만</option>
                                         <option>불만</option>
@@ -200,7 +237,7 @@ const VOCSearch = () => {
                                 </td>
                                 <th>회신방법</th>
                                 <td>
-                                    <DropDown width={250}>
+                                    <DropDown gray width={250}>
                                         <option>불만</option>
                                         <option>불만</option>
                                         <option>불만</option>
@@ -211,22 +248,22 @@ const VOCSearch = () => {
                                 <th>관련계좌등록</th>
                                 <td>
                                     <SpaceWrap>
-                                        <DropDown width={140} marginRight={10}>
+                                        <DropDown gray width={140} marginRight={10}>
                                             <option>직접입력</option>
                                             <option>계좌입력</option>
                                         </DropDown>
-                                        <DropDown width={140} marginRight={10}>
+                                        <DropDown gray width={140} marginRight={10}>
                                             <option>본인</option>
                                             <option>본인 외(가족)</option>
                                         </DropDown>
-                                        <TextInput width={290} marginRight={10} />
+                                        <TextInput gray width={290} marginRight={10} />
                                         <DefaultButton width={80} title="등록" />
                                     </SpaceWrap>
                                 </td>
                                 <th>서비스</th>
                                 <td colSpan={3}>
                                     <SpaceWrap>
-                                        <TextInput width={590} marginRight={10} disabled value="해당없음" />
+                                        <TextInput gray width={590} marginRight={10} disabled value="해당없음" />
                                         <DefaultButton width={80} title="조회" />
                                     </SpaceWrap>
                                 </td>
@@ -237,9 +274,9 @@ const VOCSearch = () => {
                                     <CheckBoxWrap>
                                         <DefaultButton width={80} marginRight={20} title="조회" />
                                         <LabelText marginRight={10}>업무 분류표</LabelText>
-                                        <TextInput width={632} marginRight={20} value={'수신 > 실명제 > 계좌개설'} />
+                                        <TextInput gray width={632} marginRight={20} value={'수신 > 실명제 > 계좌개설'} />
                                         <LabelText marginRight={10}>감정 분류표</LabelText>
-                                        <TextInput disabled width={632} value={'부정 > 상담사 > 산만함'} />
+                                        <TextInput gray disabled width={632} value={'부정 > 상담사 > 산만함'} />
                                     </CheckBoxWrap>
                                 </td>
                             </tr>
@@ -247,15 +284,15 @@ const VOCSearch = () => {
                                 <th>관련부서</th>
                                 <td>
                                     <CheckBoxWrap>
-                                        <TextInput width={450} marginRight={10} value={'개인고객부, 디지털마케팅부, 채널전략부'} />
+                                        <TextInput gray width={450} marginRight={10} value={'개인고객부, 디지털마케팅부, 채널전략부'} />
                                         <DefaultButton width={80} title="조회" />
                                     </CheckBoxWrap>
                                 </td>
-                                <th>발생점</th>
+                                <th className="redDot">발생점</th>
                                 <td colSpan={3}>
                                     <CheckBoxWrap>
-                                        <TextInput width={105} marginRight={10} value={'1766'} />
-                                        <TextInput width={220} marginRight={10} value={'경기광주금융센터'} />
+                                        <TextInput gray width={105} marginRight={10} value={'1766'} />
+                                        <TextInput gray width={220} marginRight={10} value={'경기광주금융센터'} />
                                         <DefaultButton width={91} title="지점검색" />
                                     </CheckBoxWrap>
                                 </td>
@@ -264,12 +301,12 @@ const VOCSearch = () => {
                                 <th>민원사전예고</th>
                                 <td>
                                     <CheckBoxWrap>
-                                        <TextInput width={220} marginRight={10} value={'1766'} />
-                                        <TextInput width={220} marginRight={10} value={'경기광주금융센터'} />
+                                        <TextInput gray width={220} marginRight={10} value={'1766'} />
+                                        <TextInput gray width={220} marginRight={10} value={'경기광주금융센터'} />
                                         <DefaultButton width={80} title="조회" />
                                     </CheckBoxWrap>
                                 </td>
-                                <th>완료예정일</th>
+                                <th className="redDot">완료예정일</th>
                                 <td colSpan={3}>
                                     <DateInput />
                                 </td>
@@ -278,12 +315,12 @@ const VOCSearch = () => {
                                 <th>관련 민원/VOC</th>
                                 <td colSpan={5}>
                                     <CheckBoxWrap>
-                                        <DropDown width={282} marginRight={10}>
+                                        <DropDown gray width={282} marginRight={10}>
                                             <option>관련민원 선택</option>
                                             <option>관련민원 선택</option>
                                         </DropDown>
-                                        <TextInput width={574} marginRight={10} />
-                                        <TextInput width={574} marginRight={10} />
+                                        <TextInput gray width={574} marginRight={10} />
+                                        <TextInput gray width={574} marginRight={10} />
                                         <DefaultButton width={80} title="조회" />
                                     </CheckBoxWrap>
                                 </td>
@@ -311,7 +348,7 @@ const VOCSearch = () => {
                                 <th>첨부파일</th>
                                 <td>
                                     <CheckBoxWrap>
-                                        <TextInput width={1439} marginRight={10} />
+                                        <TextInput gray width={1439} marginRight={10} />
                                         <DefaultButton width={91} title="찾아보기" />
                                     </CheckBoxWrap>
                                 </td>
@@ -320,7 +357,14 @@ const VOCSearch = () => {
                     </Table>
                 </TableWrap>
                 <TableWrap>
-                    <Table title="통지정보">
+                    <Table
+                        title="통지정보"
+                        button
+                        btnTitle={'통지등록'}
+                        onClick={() => {
+                            setOpenNoticeModal(true);
+                        }}
+                    >
                         <caption>통지정보</caption>
                         <colgroup>
                             <col width="86px" />
@@ -400,11 +444,11 @@ const VOCSearch = () => {
                                 <th>발생원인</th>
                                 <td>
                                     <CheckBoxWrap>
-                                        <DropDown width={335} marginRight={10}>
+                                        <DropDown gray width={335} marginRight={10}>
                                             <option> 선택</option>
                                             <option>선택</option>
                                         </DropDown>
-                                        <DropDown width={335}>
+                                        <DropDown gray width={335}>
                                             <option> 선택</option>
                                             <option>선택</option>
                                         </DropDown>
@@ -422,7 +466,7 @@ const VOCSearch = () => {
                             <tr>
                                 <th>처리방법</th>
                                 <td>
-                                    <DropDown width={335}>
+                                    <DropDown gray width={335}>
                                         <option> 선택</option>
                                         <option>선택</option>
                                     </DropDown>
@@ -433,7 +477,7 @@ const VOCSearch = () => {
                                 </td>
                                 <th>처리결과</th>
                                 <td>
-                                    <DropDown width={250}>
+                                    <DropDown gray width={250}>
                                         <option> 선택</option>
                                         <option>선택</option>
                                     </DropDown>
@@ -443,9 +487,9 @@ const VOCSearch = () => {
                                 <th>처리자</th>
                                 <td colSpan={5}>
                                     <CheckBoxWrap>
-                                        <TextInput disabled width={282} marginRight={10} value={'8888000070'} />
-                                        <TextInput disabled width={282} marginRight={10} value={'소비자지원부'} />
-                                        <TextInput disabled width={282} marginRight={10} value={'홍길동'} />
+                                        <TextInput gray disabled width={282} marginRight={10} value={'8888000070'} />
+                                        <TextInput gray disabled width={282} marginRight={10} value={'소비자지원부'} />
+                                        <TextInput gray disabled width={282} marginRight={10} value={'홍길동'} />
                                         <DefaultButton title="직원검색" />
                                     </CheckBoxWrap>
                                 </td>
@@ -468,7 +512,7 @@ const VOCSearch = () => {
                                 </td>
                                 <th>민원유발 개수</th>
                                 <td colSpan={3}>
-                                    <DropDown width={290}>
+                                    <DropDown gray width={290}>
                                         <option> 선택</option>
                                         <option>선택</option>
                                     </DropDown>
@@ -487,11 +531,11 @@ const VOCSearch = () => {
                             <tr>
                                 <th>상품 판매자</th>
                                 <td>
-                                    <TextInput width={120} />
+                                    <TextInput gray width={120} />
                                 </td>
                                 <th>세부유형</th>
                                 <td colSpan={3}>
-                                    <DropDown width={290}>
+                                    <DropDown gray width={290}>
                                         <option> 선택</option>
                                         <option>선택</option>
                                     </DropDown>
@@ -501,14 +545,14 @@ const VOCSearch = () => {
                                 <th>분쟁대상금액</th>
                                 <td>
                                     <FlexWrap>
-                                        <TextInput width={290} marginRight={10} />
+                                        <TextInput gray width={290} marginRight={10} />
                                         <UnitText>원</UnitText>
                                     </FlexWrap>
                                 </td>
                                 <th>분쟁확정금액</th>
                                 <td colSpan={3}>
                                     <FlexWrap>
-                                        <TextInput width={290} marginRight={10} />
+                                        <TextInput gray width={290} marginRight={10} />
                                         <UnitText>원</UnitText>
                                     </FlexWrap>
                                 </td>
@@ -517,7 +561,7 @@ const VOCSearch = () => {
                                 <th>가입금액</th>
                                 <td>
                                     <FlexWrap>
-                                        <TextInput width={290} marginRight={10} />
+                                        <TextInput gray width={290} marginRight={10} />
                                         <UnitText>원</UnitText>
                                     </FlexWrap>
                                 </td>
@@ -530,7 +574,7 @@ const VOCSearch = () => {
                                 <th>첨부파일</th>
                                 <td colSpan={5}>
                                     <CheckBoxWrap>
-                                        <TextInput width={1451} marginRight={10} />
+                                        <TextInput gray width={1451} marginRight={10} />
                                         <DefaultButton title={'찾아보기'} />
                                     </CheckBoxWrap>
                                 </td>
@@ -567,109 +611,224 @@ const VOCSearch = () => {
                         ))}
                     </LabelWrap>
                     <DataWrap>
-                        <Table>
-                            <caption>이력조회</caption>
-                            <colgroup>
-                                <col width="336px" />
-                                <col width="336px" />
-                                <col width="336px" />
-                                <col width="336px" />
-                                <col width="336px" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>단계</th>
-                                    <th>실시여부</th>
-                                    <th>일시</th>
-                                    <th>방법</th>
-                                    <th>비고</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <StepText>처리기한 연장</StepText>
-                                    </td>
-                                    <td>
-                                        <Checkbox id={'play01'} name={'play'} />
-                                    </td>
-                                    <td>
-                                        <DateInput width={'100%'} />
-                                    </td>
-                                    <td>
-                                        <DropDown>
-                                            <option>선택</option>
-                                            <option>전화</option>
-                                            <option>SMS</option>
-                                        </DropDown>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <StepText>사실관계 확인(민원 처리 중)</StepText>
-                                    </td>
-                                    <td>
-                                        <Checkbox id={'play02'} name={'play'} />
-                                    </td>
-                                    <td>
-                                        <DateInput width={'100%'} />
-                                    </td>
-                                    <td>
-                                        <DropDown>
-                                            <option>선택</option>
-                                            <option>전화</option>
-                                            <option>SMS</option>
-                                        </DropDown>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <StepText>처리기한 연장</StepText>
-                                    </td>
-                                    <td>
-                                        <Checkbox id={'play03'} name={'play'} />
-                                    </td>
-                                    <td>
-                                        <DateInput disabled width={'100%'} />
-                                    </td>
-                                    <td>
-                                        <DropDown disabled>
-                                            <option>선택</option>
-                                            <option>전화</option>
-                                            <option>SMS</option>
-                                        </DropDown>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <StepText>민원종결(회신)</StepText>
-                                    </td>
-                                    <td>
-                                        <Checkbox id={'play04'} name={'play'} />
-                                    </td>
-                                    <td>
-                                        <DateInput width={'100%'} />
-                                    </td>
-                                    <td>
-                                        <DropDown>
-                                            <option>선택</option>
-                                            <option>전화</option>
-                                            <option>SMS</option>
-                                        </DropDown>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </Table>
+                        {selectLabel === '회신문' ? (
+                            <>
+                                <TableBtnWrap>
+                                    <TableBtn marginRight>초기화</TableBtn>
+                                    <TableBtn marginRight>저장</TableBtn>
+                                    <TableBtn>출력</TableBtn>
+                                </TableBtnWrap>
+                                <Table>
+                                    <caption>이력조회</caption>
+                                    <colgroup>
+                                        <col width="140px" />
+                                        <col width="700px" />
+                                        <col width="140px" />
+                                        <col width="700px" />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>회신구분</th>
+                                            <td>
+                                                <SpaceWrap>
+                                                    <Radio checked label={'소비자'} />
+                                                    <Radio label={'금융감독원'} />
+                                                    <Radio label={'금감원2'} />
+                                                </SpaceWrap>
+                                            </td>
+                                            <th>상용구사용</th>
+                                            <td>
+                                                <SpaceWrap>
+                                                    <Radio checked label={'Y'} />
+                                                    <Radio label={'N'} />
+                                                </SpaceWrap>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>문서번호</th>
+                                            <td>
+                                                <TextInput gray width={660} value={'소비자지원 2022-0217'} />
+                                            </td>
+                                            <th>심의필</th>
+                                            <td>
+                                                <TextInput gray width={660} value={'2020-1543'} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>수신</th>
+                                            <td>
+                                                <TextInput gray width={660} value={'박동욱 고객님'} />
+                                            </td>
+                                            <th>참조</th>
+                                            <td>
+                                                <TextInput gray width={660} value={''} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>제목</th>
+                                            <td colSpan={3}>
+                                                <TextInput gray width={1500} value={''} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>내용</th>
+                                            <td colSpan={3}>
+                                                <TextArea height={92}></TextArea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>전자직인</th>
+                                            <td colSpan={3}>
+                                                <DropDown width={290} gray>
+                                                    <option>은행장직인</option>
+                                                    <option>은행장직인</option>
+                                                    <option>은행장직인</option>
+                                                    <option>은행장직인</option>
+                                                </DropDown>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>첨부파일</th>
+                                            <td colSpan={3}>
+                                                <SpaceWrap>
+                                                    <TextInput gray width={1411} marginRight={10} />
+                                                    <DefaultButton title={'찾아보기'} />
+                                                </SpaceWrap>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colSpan={4}>
+                                                <LabelWrap>
+                                                    <CheckBoxWrap>
+                                                        <UnitText marginRight>결제상태</UnitText>
+                                                        <TextInput gray width={729} value={'-'} />
+                                                    </CheckBoxWrap>
+                                                    <CheckBoxWrap>
+                                                        <UnitText marginRight>출력일시</UnitText>
+                                                        <TextInput gray width={729} value={'-'} />
+                                                    </CheckBoxWrap>
+                                                </LabelWrap>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </>
+                        ) : (
+                            <>
+                                <TableBtnWrap>
+                                    <TableBtn>저장</TableBtn>
+                                </TableBtnWrap>
+                                <Table>
+                                    <caption>이력조회</caption>
+                                    <colgroup>
+                                        <col width="336px" />
+                                        <col width="336px" />
+                                        <col width="336px" />
+                                        <col width="336px" />
+                                        <col width="336px" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>단계</th>
+                                            <th>실시여부</th>
+                                            <th>일시</th>
+                                            <th>방법</th>
+                                            <th>비고</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <StepText>처리기한 연장</StepText>
+                                            </td>
+                                            <td>
+                                                <Checkbox id={'play01'} name={'play'} />
+                                            </td>
+                                            <td>
+                                                <DateInput width={'100%'} />
+                                            </td>
+                                            <td>
+                                                <DropDown gray>
+                                                    <option>선택</option>
+                                                    <option>전화</option>
+                                                    <option>SMS</option>
+                                                </DropDown>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <StepText>사실관계 확인(민원 처리 중)</StepText>
+                                            </td>
+                                            <td>
+                                                <Checkbox id={'play02'} name={'play'} />
+                                            </td>
+                                            <td>
+                                                <DateInput width={'100%'} />
+                                            </td>
+                                            <td>
+                                                <DropDown gray>
+                                                    <option>선택</option>
+                                                    <option>전화</option>
+                                                    <option>SMS</option>
+                                                </DropDown>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <StepText>처리기한 연장</StepText>
+                                            </td>
+                                            <td>
+                                                <Checkbox id={'play03'} name={'play'} />
+                                            </td>
+                                            <td>
+                                                <DateInput disabled width={'100%'} />
+                                            </td>
+                                            <td>
+                                                <DropDown gray disabled>
+                                                    <option>선택</option>
+                                                    <option>전화</option>
+                                                    <option>SMS</option>
+                                                </DropDown>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <StepText>민원종결(회신)</StepText>
+                                            </td>
+                                            <td>
+                                                <Checkbox id={'play04'} name={'play'} />
+                                            </td>
+                                            <td>
+                                                <DateInput width={'100%'} />
+                                            </td>
+                                            <td>
+                                                <DropDown gray>
+                                                    <option>선택</option>
+                                                    <option>전화</option>
+                                                    <option>SMS</option>
+                                                </DropDown>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </>
+                        )}
                     </DataWrap>
                 </SearchWrap>
             </Wrapper>
             <BottomTabWrap>
                 <SpaceWrap>
-                    <BtnWrap width={190} notification>
+                    <BtnWrap
+                        width={190}
+                        notification
+                        onClick={() => {
+                            setOpenBottomSlide(true);
+                        }}
+                    >
                         <BtnText>민원/VOC 이력 2건</BtnText>
                     </BtnWrap>
                     <BtnWrap width={238}>
@@ -690,7 +849,7 @@ const VOCSearch = () => {
                     <BlueBtn marginLeft={20} title={'결제'} />
                 </SpaceWrap>
             </BottomTabWrap>
-            {/* <BottomSlideSheet /> */}
+            <BottomSlideSheet openBottomSlide={openBottomSlide} setOpenBottomSlide={setOpenBottomSlide} />
         </Container>
     );
 };

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { styled, keyframes, css } from 'styled-components';
 
 import Table from '../Table';
 import TextInput from '../textInput/TextInput';
@@ -8,11 +8,36 @@ import CloseBtn from '../../assets/images/closeModalBtn.png';
 import Checkbox from '../CheckBox';
 import TextArea from '../TextArea';
 
+const fadeIn = keyframes`
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+`;
+
+const modalSettings = (openSearchModal) => css`
+    visibility: ${openSearchModal ? 'visible' : 'hidden'};
+    z-index: 15;
+    animation: ${openSearchModal ? fadeIn : fadeOut} 0.3s ease-out;
+    transition: visibility 0.3s ease-out;
+`;
+
 const BackView = styled.div`
-    padding: 108px 60px 40px 140px;
+    padding: 204px 60px 40px 140px;
     width: 1920px;
     height: 100%;
-    position: absolute;
+    position: fixed;
     display: flex;
     top: 0;
     left: 0;
@@ -25,6 +50,8 @@ const BackView = styled.div`
 const Container = styled.div`
     width: 1720px;
     height: 977px;
+
+    ${(props) => modalSettings(props.openSearchModal)}
 `;
 
 const Header = styled.div`
@@ -101,7 +128,8 @@ const HighLightText = styled.p`
     color: #ee9300;
 `;
 
-const HistoryModal = () => {
+const HistoryModal = ({ openSearchModal, setOpenSearchModal }) => {
+    const [isOpen, setIsOpen] = useState(false);
     const introEx = {
         0: `1. 귀 은행의 일익번창하심을 기원합니다.
 2. 귀 은행에 불만사항을 제기하오니 검토하신 후 처리하여 주시기 바랍니다.
@@ -123,14 +151,68 @@ const HistoryModal = () => {
         return () => hideModal();
     }, []);
 
+    useEffect(() => {
+        let timeoutId;
+        if (openSearchModal) {
+            setIsOpen(true);
+            showModal();
+        } else {
+            timeoutId = setTimeout(() => {
+                hideModal();
+                setIsOpen(false);
+            }, 350);
+        }
+
+        return () => {
+            if (timeoutId !== undefined) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [openSearchModal]);
+
+    if (!isOpen) {
+        return null;
+    }
+
     return (
         <BackView>
-            <Container>
+            <Container openSearchModal={openSearchModal}>
                 <Header>
                     <HeaderTitle>민원/ VOC 이력 조회</HeaderTitle>
-                    <IconButton />
+                    <IconButton
+                        onClick={() => {
+                            setOpenSearchModal(!openSearchModal);
+                        }}
+                    />
                 </Header>
                 <Wrapper>
+                    <TableWrap>
+                        <Table notBorder title={'민원/ VOC 처리정보'}>
+                            <caption>민원/ VOC 처리정보</caption>
+                            <colgroup>
+                                <col width="140px" />
+                                <col width="290px" />
+                                <col width="140px" />
+                                <col width="290px" />
+                                <col width="140px" />
+                                <col width="290px" />
+                                <col width="140px" />
+                                <col width="290px" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th className="black">진행상태</th>
+                                    <td className="black">종결</td>
+                                    <th>ID</th>
+                                    <td>V2021002124</td>
+                                    <th>등록일시</th>
+                                    <td>2021.11.15 16:57:57</td>
+                                    <th>민원처리 담당자</th>
+                                    <td className="gray">담당자 홍길동</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </TableWrap>
                     <TableWrap>
                         <Table title={'신청인 정보'}>
                             <caption>신청인 정보</caption>

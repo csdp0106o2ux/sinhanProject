@@ -34,7 +34,7 @@ const Title = styled.span`
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
-    color: ${(props) => (props.checked && !props.disabled ? 'color: #fff;' : !props.checked && !props.disabled ? 'color: #333;' : !props.checked && props.disabled && '#8c8c8c')};
+    color: ${(props) => (props.checked && props.disabled === false ? '#fff;' : !props.checked && !props.disabled ? '#333;' : !props.checked && props.disabled && '#8c8c8c')};
 `;
 
 const SubText = styled.p`

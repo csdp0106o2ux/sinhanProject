@@ -136,6 +136,19 @@ const SideBar = () => {
             id: 0,
             title: '조회',
             icon: <SearchOn />,
+            checked: false,
+        },
+        {
+            id: 0,
+            title: '조회',
+            icon: <SearchOn />,
+            checked: false,
+        },
+        {
+            id: 0,
+            title: '조회',
+            icon: <SearchOn />,
+            checked: false,
         },
     ];
 
@@ -178,7 +191,7 @@ const SideBar = () => {
                     <ConsumerToggle style={{ display: hover ? 'flex' : 'none' }} checked={toggle} onLeftClick={() => setToggle(false)} onRightClick={() => setToggle(true)} />
                 </ToggleWrap>
                 {accodion.map((item) => (
-                    <SideBarAccodion hover={hover} key={item.id} title={item.title} icon={item.icon} />
+                    <SideBarAccodion hover={hover} key={item.id} title={item.title} icon={item.icon} checked={item.checked} />
                 ))}
             </TopWrap>
         </Container>
