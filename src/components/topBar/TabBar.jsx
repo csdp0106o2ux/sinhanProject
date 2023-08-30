@@ -21,7 +21,7 @@ const Container = styled.div`
     border-bottom-left-radius: 16px;
     box-shadow: 0 0 16px 0 rgba(27, 131, 242, 0.3), inset 0 -3px 8px 2px rgba(0, 0, 0, 0.1), inset 0 13px 6px -10px rgba(255, 255, 255, 0.35);
     background-image: linear-gradient(292deg, #a0d0f4 100%, #5cb8ff 26%, #66ade3 0%);
-    z-index: 100;
+    z-index: 99;
 `;
 
 const IconWrap = styled.div`
@@ -38,6 +38,7 @@ const IconText = styled.span`
     font-stretch: normal;
     font-style: normal;
     font-family: ${({ slimFont }) => (slimFont ? 'NanumSquareOTFE' : 'NanumSquareOTFR')};
+    ${(props) => props.openSlideSheet && `font-family: NanumSquareOTFEB`};
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
@@ -52,8 +53,8 @@ const TabBar = (props) => {
                 <IconText slimFont>My Job</IconText>
             </IconWrap>
             <IconWrap onClick={() => props.setOpenSlideSheet(!props.openSlideSheet)}>
-                <PaperOnIcon />
-                <IconText>나의정보</IconText>
+                {props.openSlideSheet ? <PaperOffIcon /> : <PaperOnIcon />}
+                <IconText openSlideSheet={props.openSlideSheet}>나의정보</IconText>
             </IconWrap>
             <IconWrap>
                 <MenuOnIcon />

@@ -4,10 +4,12 @@ import { DropDown, GoodCard, IndexBar, KeywordCard, ScoreGraphCard, TabBar } fro
 import { Container, BoardTitleWrap, FlexWrap, BoardTitle, BannerWrap, BannerText, IconWrap, DropDownWrap, DropDownText, ScoreWrap, NoticeWrap, ScoreAreaWrap, ScoreTitle, DateText, OpacityWrap, GoodScoreWrap, ScoreCardWrap, Wrapper } from './components/style';
 import { ReactComponent as BlueSideArrow } from '../../assets/icons/blueSideArrow.svg';
 import { ReactComponent as Notification } from '../../assets/icons/combinedShape.svg';
+import { ReactComponent as NewNotice } from '../../assets/icons/newNotice.svg';
 import AreaCard from './components/areaCard/AreaCard';
 import ScoreCard from '../goodTab1/components/scoreCard/ScoreCard';
 import StaffCard from './components/staffCard/StaffCard';
 import { useNavigate } from 'react-router-dom';
+import TopSlideSheet from '../../layout/TopSlideSheet';
 
 const GoodTab2 = () => {
     const navigate = useNavigate();
@@ -16,22 +18,23 @@ const GoodTab2 = () => {
     const [score, setScore] = useState([]);
     const [keywordToggle, setKeywordToggle] = useState(false);
     const [selectTab, setSelectTab] = useState('진행');
+    const [openSlideSheet, setOpenSlideSheet] = useState(null);
 
     const dummyData = [
         {
             id: 0,
             width: 100,
-            title: '리테일',
+            option: '리테일',
         },
         {
             id: 1,
             width: 100,
-            title: '월별',
+            option: '월별',
         },
         {
             id: 2,
             width: 110,
-            title: '2022.02',
+            option: '2022.02',
         },
     ];
 
@@ -121,11 +124,11 @@ const GoodTab2 = () => {
     return (
         <Container>
             <IndexBar experience />
-            <TabBar />
+            <TabBar openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
             <Wrapper>
                 <BoardTitleWrap>
                     <FlexWrap>
-                        <BoardTitle onClick={() => navigate('/goodTab1')}>My Good</BoardTitle>
+                        <BoardTitle onClick={() => navigate('/')}>My Good</BoardTitle>
                         <BoardTitle right checked>
                             Our Good
                         </BoardTitle>
@@ -135,6 +138,7 @@ const GoodTab2 = () => {
                             <Notification />
                         </IconWrap>
                         <BannerText>금일 현 시간의 Good 경험 15건 (▲+2), 칭찬 VOC 32건 (▲+12) 입니다.</BannerText>
+                        <NewNotice />
                         <div style={{ flex: 1 }} />
                         <BlueSideArrow />
                     </BannerWrap>
@@ -142,7 +146,7 @@ const GoodTab2 = () => {
                 <DropDownWrap>
                     <DropDownText>서울권역. 서초 커뮤니티/ 남부터미널 기업금융센터 (출장소 포함)</DropDownText>
                     {dropDown?.map((item) => (
-                        <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
+                        <DropDown key={item.id} width={item.width} option={item.option} calender={item.id === 2} margin={item.id !== 2} />
                     ))}
                 </DropDownWrap>
                 <FlexWrap>
@@ -226,6 +230,7 @@ const GoodTab2 = () => {
                     </NoticeWrap>
                 </FlexWrap>
             </Wrapper>
+            <TopSlideSheet openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
         </Container>
     );
 };

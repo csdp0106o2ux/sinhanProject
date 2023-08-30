@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import BackView from '../../components/BackView';
 import TopSlideSheet from '../../layout/TopSlideSheet';
 import NoticeModal from '../../components/NoticeModal';
+import BottomSlideSheet from '../../layout/BottomSlideSheet';
 
 const GoodTab1 = () => {
     const navigate = useNavigate();
@@ -29,17 +30,17 @@ const GoodTab1 = () => {
         {
             id: 0,
             width: 100,
-            title: '리테일',
+            option: '리테일',
         },
         {
             id: 1,
             width: 100,
-            title: '월별',
+            option: '월별',
         },
         {
             id: 2,
             width: 110,
-            title: '2022.02',
+            option: '2022.02',
         },
     ];
 
@@ -96,7 +97,7 @@ const GoodTab1 = () => {
     return (
         <>
             <Container>
-                <NoticeModal />
+                {/* <NoticeModal /> */}
                 <IndexBar experience />
                 <TabBar openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
                 <Wrapper>
@@ -119,7 +120,7 @@ const GoodTab1 = () => {
                     <DropDownWrap>
                         <DropDownText>서울권역. 서초 커뮤니티/ 남부터미널 기업금융센터 (출장소 포함)</DropDownText>
                         {dropDown?.map((item) => (
-                            <DropDown key={item.id} width={item.width} title={item.title} calender={item.id === 2} margin={item.id !== 2} />
+                            <DropDown key={item.id} width={item.width} option={item.option} calender={item.id === 2} margin={item.id !== 2} />
                         ))}
                     </DropDownWrap>
                     <FlexWrap>
@@ -166,9 +167,7 @@ const GoodTab1 = () => {
                         </NoticeWrap>
                     </FlexWrap>
                 </Wrapper>
-                {/* <BackView openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet}> */}
                 <TopSlideSheet openSlideSheet={openSlideSheet} setOpenSlideSheet={setOpenSlideSheet} />
-                {/* </BackView> */}
             </Container>
         </>
     );

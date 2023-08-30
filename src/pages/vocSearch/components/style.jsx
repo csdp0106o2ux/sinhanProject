@@ -8,10 +8,11 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-    padding: 30px 60px 0 140px;
+    padding: 204px 60px 0 140px;
 `;
 
 const FlexWrap = styled.div`
+    margin-bottom: ${(props) => props.marginBottom && `${props.marginBottom}px`};
     display: flex;
     align-items: flex-end;
 `;
@@ -94,6 +95,7 @@ const LabelText = styled.label`
 `;
 
 const UnitText = styled.p`
+    margin-right: ${(props) => props.marginRight && '20px'};
     font-family: NanumSquareOTFB;
     font-size: 14px;
     font-weight: normal;
@@ -135,6 +137,33 @@ const DataWrap = styled.div`
     background-color: #fdfdfd;
 `;
 
+const TableBtnWrap = styled.div`
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const TableBtn = styled.button`
+    margin-right: ${(props) => props.marginRight && '6px'};
+    width: 92px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: solid 1.5px #dbdbdb;
+    background-color: #fdfdfd;
+    font-family: NanumSquareOTFEB;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3495df;
+`;
+
 const StepText = styled.p`
     font-family: NanumSquareOTFR;
     font-size: 14px;
@@ -146,4 +175,4 @@ const StepText = styled.p`
     color: #555;
 `;
 
-export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText };
+export { Container, Wrapper, FlexWrap, CheckBoxWrap, CheckBox, CheckBoxText, TableWrap, BottomTabWrap, BtnWrap, BtnText, SpaceWrap, LabelText, UnitText, Title, SearchWrap, LabelWrap, DataWrap, StepText, TableBtnWrap, TableBtn };

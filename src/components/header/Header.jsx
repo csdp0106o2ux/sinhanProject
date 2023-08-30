@@ -5,12 +5,14 @@ const Container = styled.div`
     padding: 0 275px 0 135px;
     width: 100%;
     height: 68px;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 30px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
     background-image: linear-gradient(to bottom, #fdfdfd, #fdfdfd), linear-gradient(273deg, #a0d0f4 100%, #a0d0f4 99%, #9bd4ff 58%, #47a9f4 19%, #4ba1e3 -1%);
+    z-index: 98;
 `;
 
 const Title = styled.span`
@@ -21,6 +23,22 @@ const Title = styled.span`
     line-height: 1.56;
     letter-spacing: normal;
     color: ${(props) => props.theme.lightPacificBlue};
+`;
+
+const FlexWrap = styled.div`
+    display: flex;
+`;
+
+const HideTitle = styled.span`
+    margin-left: 14px;
+    font-family: OneShinhan;
+    font-size: 18px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #333;
 `;
 
 const SubTitleWrap = styled.div`
@@ -42,7 +60,10 @@ const SubTitle = styled.span`
 const Header = () => {
     return (
         <Container>
-            <Title>조회{'>'}민원/ VOC 조회</Title>
+            <FlexWrap>
+                <Title>조회{'>'}민원/ VOC 조회</Title>
+                <HideTitle>민원 VOC 상세</HideTitle>
+            </FlexWrap>
             <SubTitleWrap>
                 <SubTitle>소비자지원부</SubTitle>
                 <SubTitle border>선임</SubTitle>

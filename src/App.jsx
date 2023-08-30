@@ -16,7 +16,7 @@ function App() {
                 <SideBar />
                 <Routes location={location} key={location.pathname}>
                     {/* <TabBar /> */}
-                    <Route path="/goodTab1" element={<GoodTab1 />} />
+                    <Route path="/" element={<GoodTab1 />} />
                     <Route path="/goodTab2" element={<GoodTab2 />} />
                     <Route path="/goodTab3" element={<GoodTab3 />} />
                     <Route path="/vocSearch" element={<VOCSearch />} />

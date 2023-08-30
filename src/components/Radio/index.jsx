@@ -10,7 +10,7 @@ const Wrap = styled.div`
 `;
 
 const Label = styled.label`
-    margin-left: 2px;
+    /* margin-left: 2px; */
     font-family: NanumSquareOTFR;
     font-size: 14px;
     font-weight: normal;
@@ -23,11 +23,11 @@ const Label = styled.label`
 
 const RadioInput = styled.input`
     appearance: none;
-    width: 21px;
-    height: 21px;
-    background: url(${RadioOff}) no-repeat 100% 100% / cover;
+    width: ${(props) => (props.width ? `${props.width}px` : '24px')};
+    height: ${(props) => (props.height ? `${props.height}px` : '24px')};
+    background: url(${RadioOff}) no-repeat 50% 50%;
     &:checked {
-        background: url(${RadioOn}) no-repeat 100% 100% / cover;
+        background: url(${RadioOn}) no-repeat 50% 50%;
         & + ${Label} {
             font-weight: 700;
         }
@@ -37,7 +37,7 @@ const RadioInput = styled.input`
 const Radio = (props) => {
     return (
         <Wrap>
-            <RadioInput type="radio" name={props.name} id={props.id} checked={props.checked}></RadioInput>
+            <RadioInput type="radio" name={props.name} id={props.id} checked={props.checked} width={props.width} height={props.height}></RadioInput>
             <Label htmlFor={props.id}>{props.label}</Label>
         </Wrap>
     );
